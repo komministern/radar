@@ -1,0 +1,350 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Analogue_Waveform	radar/model/waveforms.py	/^class Analogue_Waveform(object):$/;"	c
+Antenna	radar/model/antenna.py	/^class Antenna(object):$/;"	c
+Antenna	radar/model/antenna/antenna.py	/^class Antenna(object):$/;"	c
+Antenna	radar/model/radar.py	/^from antenna.antenna import Antenna$/;"	i
+But	radar/model/radar.py	/^from pyqtgraph.Qt import QtCore     # This is unfortunate. But I will use this package for$/;"	i
+Environment	radar/model/environment.py	/^class Environment(object):$/;"	c
+Environment	radar/model/environment/environment.py	/^class Environment(object):$/;"	c
+Environment	radar/model/radar.py	/^from environment.environment import Environment$/;"	i
+I	radar/model/radar.py	/^from pyqtgraph.Qt import QtCore     # This is unfortunate. But I will use this package for$/;"	i
+MyMainWindow	radar/coretest.py	/^from view.mymainwindow import MyMainWindow$/;"	i
+MyMainWindow	radar/view/mymainwindow.py	/^class MyMainWindow(TemplateBaseClass):$/;"	c
+Observable	radar/model/radar.py	/^from observable.observable import Observable$/;"	i
+Observable	radar/observable/observable.py	/^class Observable(list):$/;"	c
+PointTarget	radar/model/environment/environment.py	/^from pointtarget import PointTarget$/;"	i
+PointTarget	radar/model/environment/pointtarget.py	/^class PointTarget(object):$/;"	c
+Presenter	radar/coretest.py	/^from presenter.presenter import Presenter$/;"	i
+Presenter	radar/presenter/presenter.py	/^class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able to connect to signals from view.$/;"	c
+QtCore	radar/model/radar.py	/^from pyqtgraph.Qt import QtCore     # This is unfortunate. But I will use this package for$/;"	i
+QtCore	radar/presenter/presenter.py	/^from pyqtgraph.Qt import QtCore$/;"	i
+QtCore	radar/view/mymainwindow.py	/^from pyqtgraph.Qt import QtGui, QtCore$/;"	i
+QtGui	radar/coretest.py	/^from pyqtgraph.Qt import QtGui$/;"	i
+QtGui	radar/view/mymainwindow.py	/^from pyqtgraph.Qt import QtGui, QtCore$/;"	i
+Radar	radar/coretest.py	/^from model.radar import Radar$/;"	i
+Radar	radar/model/radar.py	/^class Radar(Observable):$/;"	c
+Sampled_Waveform	radar/model/waveforms.py	/^class Sampled_Waveform(np.ndarray):     # This taken from numpy docs (__new__, __array_finalize__)$/;"	c
+Simulation_Constants	radar/model/radar.py	/^from simulation_constants import Simulation_Constants$/;"	i
+Simulation_Constants	radar/model/simulation_constants.py	/^class Simulation_Constants(object):$/;"	c
+This	radar/model/radar.py	/^from pyqtgraph.Qt import QtCore     # This is unfortunate. But I will use this package for$/;"	i
+Transceiver	radar/model/radar.py	/^from transceiver.transceiver import Transceiver$/;"	i
+Transceiver	radar/model/transceiver.py	/^class Transceiver(object):$/;"	c
+Transceiver	radar/model/transceiver/transceiver.py	/^class Transceiver(object):$/;"	c
+__array_finalize__	radar/model/waveforms.py	/^    def __array_finalize__(self, obj):$/;"	m	class:Sampled_Waveform	file:
+__init__	radar/model/antenna.py	/^    def __init__(self, pointer, **kwds):$/;"	m	class:Antenna
+__init__	radar/model/antenna/antenna.py	/^    def __init__(self, pointer, **kwds):$/;"	m	class:Antenna
+__init__	radar/model/environment.py	/^    def __init__(self, **kwds):$/;"	m	class:Environment
+__init__	radar/model/environment/environment.py	/^    def __init__(self, **kwds):$/;"	m	class:Environment
+__init__	radar/model/environment/pointtarget.py	/^    def __init__(self, r, v, rcs, **kwds):$/;"	m	class:PointTarget
+__init__	radar/model/radar.py	/^    def __init__(self, **kwds):$/;"	m	class:Radar
+__init__	radar/model/simulation_constants.py	/^	def __init__(self):$/;"	m	class:Simulation_Constants
+__init__	radar/model/transceiver.py	/^    def __init__(self, pointer, **kwds):$/;"	m	class:Transceiver
+__init__	radar/model/transceiver/transceiver.py	/^    def __init__(self, pointer, **kwds):$/;"	m	class:Transceiver
+__init__	radar/model/waveforms.py	/^    def __init__(self, **kwds):$/;"	m	class:Analogue_Waveform
+__init__	radar/observable/observable.py	/^    def __init__(self, **kwds):$/;"	m	class:Observable
+__init__	radar/presenter/presenter.py	/^    def __init__(self, amodel, aview, **kwds):$/;"	m	class:Presenter
+__init__	radar/view/mymainwindow.py	/^    def __init__(self, **kwds):$/;"	m	class:MyMainWindow
+__new__	radar/model/waveforms.py	/^    def __new__(cls, input_array, _fs=None):$/;"	m	class:Sampled_Waveform	file:
+angle	radar/model/antenna.py	/^    def angle(self):$/;"	m	class:Antenna
+angle	radar/model/antenna.py	/^    def angle(self, value):$/;"	m	class:Antenna
+angle	radar/model/antenna/antenna.py	/^    def angle(self):$/;"	m	class:Antenna
+angle	radar/model/antenna/antenna.py	/^    def angle(self, value):$/;"	m	class:Antenna
+antenna	radar/model/radar.py	/^    def antenna(self):$/;"	m	class:Radar
+antenna	radar/model/radar.py	/^    def antenna(self, pointer):$/;"	m	class:Radar
+antenna	radar/model/transceiver.py	/^    def antenna(self):$/;"	m	class:Transceiver
+antenna	radar/model/transceiver.py	/^    def antenna(self, pointer):$/;"	m	class:Transceiver
+antenna	radar/model/transceiver/transceiver.py	/^    def antenna(self):$/;"	m	class:Transceiver
+antenna	radar/model/transceiver/transceiver.py	/^    def antenna(self, pointer):$/;"	m	class:Transceiver
+app	radar/coretest.py	/^    app = pg.mkQApp()$/;"	v
+bandwidth	radar/model/transceiver.py	/^    def bandwidth(self):$/;"	m	class:Transceiver
+bandwidth	radar/model/transceiver.py	/^    def bandwidth(self, value):$/;"	m	class:Transceiver
+bandwidth	radar/model/transceiver/transceiver.py	/^    def bandwidth(self):$/;"	m	class:Transceiver
+bandwidth	radar/model/transceiver/transceiver.py	/^    def bandwidth(self, value):$/;"	m	class:Transceiver
+bandwidth	radar/presenter/presenter.py	/^    def bandwidth(self, adouble):$/;"	m	class:Presenter
+beamwidth	radar/presenter/presenter.py	/^    def beamwidth(self, adouble):$/;"	m	class:Presenter
+bessel	radar/model/waveforms.py	/^from scipy.signal import lfilter, butter, bessel$/;"	i
+butter	radar/model/waveforms.py	/^from scipy.signal import lfilter, butter, bessel$/;"	i
+calculate_received_beam_waveform	radar/model/antenna.py	/^    def calculate_received_beam_waveform(self, position, angle, power, transmitted_freq, gain, beamwidth, waveforms, listening_time, fs):$/;"	m	class:Antenna
+calculate_received_beam_waveform	radar/model/antenna/antenna.py	/^    def calculate_received_beam_waveform(self, position, angle, power, transmitted_freq, gain, beamwidth, waveforms, listening_time, pulsewidth, fs, impedance):$/;"	m	class:Antenna
+chirp	radar/model/waveforms.py	/^    def chirp(self, timespan, lowfreq, highfreq, t):$/;"	m	class:Analogue_Waveform
+config	setup.py	/^config = {$/;"	v
+connect_signals	radar/presenter/presenter.py	/^    def connect_signals(self):$/;"	m	class:Presenter
+const	radar/model/antenna.py	/^import scipy.constants as const$/;"	i
+const	radar/model/antenna/antenna.py	/^import scipy.constants as const$/;"	i
+const	radar/model/environment.py	/^import scipy.constants as const$/;"	i
+const	radar/model/radar.py	/^import scipy.constants as const$/;"	i
+const	radar/model/radarequations.py	/^import scipy.constants as const$/;"	i
+const	radar/model/transceiver.py	/^import scipy.constants as const$/;"	i
+const	radar/model/transceiver/transceiver.py	/^import scipy.constants as const$/;"	i
+const	radar/model/waveforms.py	/^import scipy.constants as const$/;"	i
+const	radar/presenter/presenter.py	/^import scipy.constants as const$/;"	i
+constant	radar/model/waveforms.py	/^    def constant(self, value, t):$/;"	m	class:Analogue_Waveform
+dbm_from_mw	radar/model/radarequations.py	/^def dbm_from_mw(mw):$/;"	f
+dbm_from_vpeak	radar/model/radarequations.py	/^def dbm_from_vpeak(vpeak, R=50.0):$/;"	f
+dbm_from_vrms	radar/model/radarequations.py	/^def dbm_from_vrms(vrms, R=50.0):$/;"	f
+dbm_voltage_ref	radar/model/radarequations.py	/^def dbm_voltage_ref(R):$/;"	f
+digitize	radar/model/waveforms.py	/^    def digitize(self, fs, velocity, transmit_freq, time_delay):$/;"	m	class:Analogue_Waveform
+doppler_resolution	radar/model/simulation_constants.py	/^	def doppler_resolution(self):$/;"	m	class:Simulation_Constants
+doppler_resolution	radar/model/simulation_constants.py	/^	def doppler_resolution(self, value):$/;"	m	class:Simulation_Constants
+dopplerbin	radar/model/antenna.py	/^	dopplerbin = np.around(velocity \/ self.simulation_globals.doppler_resolution).astype(int)		$/;"	v	class:Antenna
+dopplerbin	radar/model/antenna/antenna.py	/^	dopplerbin = np.around(velocity \/ self.simulation_globals.doppler_resolution).astype(int)		$/;"	v	class:Antenna
+emit	radar/observable/observable.py	/^    def emit(self, *args):$/;"	m	class:Observable
+environment	radar/model/antenna.py	/^    def environment(self):$/;"	m	class:Antenna
+environment	radar/model/antenna.py	/^    def environment(self, value):$/;"	m	class:Antenna
+environment	radar/model/antenna/antenna.py	/^    def environment(self):$/;"	m	class:Antenna
+environment	radar/model/antenna/antenna.py	/^    def environment(self, value):$/;"	m	class:Antenna
+environment	radar/model/radar.py	/^    def environment(self):$/;"	m	class:Radar
+environment	radar/model/radar.py	/^    def environment(self, pointer):$/;"	m	class:Radar
+execute	radar/model/radar.py	/^    def execute(self):$/;"	m	class:Radar
+final_if	radar/model/transceiver.py	/^    def final_if(self):$/;"	m	class:Transceiver
+final_if	radar/model/transceiver.py	/^    def final_if(self, value):$/;"	m	class:Transceiver
+final_if	radar/model/transceiver/transceiver.py	/^    def final_if(self):$/;"	m	class:Transceiver
+final_if	radar/model/transceiver/transceiver.py	/^    def final_if(self, value):$/;"	m	class:Transceiver
+final_if_receive_waveforms	radar/model/transceiver.py	/^    def final_if_receive_waveforms(self):$/;"	m	class:Transceiver
+final_if_receive_waveforms	radar/model/transceiver.py	/^    def final_if_receive_waveforms(self, value):$/;"	m	class:Transceiver
+final_if_receive_waveforms	radar/model/transceiver/transceiver.py	/^    def final_if_receive_waveforms(self):$/;"	m	class:Transceiver
+final_if_receive_waveforms	radar/model/transceiver/transceiver.py	/^    def final_if_receive_waveforms(self, value):$/;"	m	class:Transceiver
+final_if_transmit_waveform	radar/model/transceiver.py	/^    def final_if_transmit_waveform(self):$/;"	m	class:Transceiver
+final_if_transmit_waveform	radar/model/transceiver.py	/^    def final_if_transmit_waveform(self, value):$/;"	m	class:Transceiver
+final_if_transmit_waveform	radar/model/transceiver/transceiver.py	/^    def final_if_transmit_waveform(self):$/;"	m	class:Transceiver
+final_if_transmit_waveform	radar/model/transceiver/transceiver.py	/^    def final_if_transmit_waveform(self, value):$/;"	m	class:Transceiver
+finaliffrequency	radar/presenter/presenter.py	/^    def finaliffrequency(self, adouble):$/;"	m	class:Presenter
+for	radar/model/radar.py	/^from pyqtgraph.Qt import QtCore     # This is unfortunate. But I will use this package for$/;"	i
+freq_func	radar/model/waveforms.py	/^    def freq_func(self):$/;"	m	class:Analogue_Waveform
+freq_func	radar/model/waveforms.py	/^    def freq_func(self, afunc):$/;"	m	class:Analogue_Waveform
+from_dB	radar/model/radarequations.py	/^def from_dB(db):$/;"	f
+fs	radar/model/waveforms.py	/^    def fs(self):$/;"	m	class:Sampled_Waveform
+gain	radar/presenter/presenter.py	/^    def gain(self, adouble):$/;"	m	class:Presenter
+generate_final_if_receive_waveforms	radar/model/transceiver.py	/^    def generate_final_if_receive_waveforms(self, awf, fs, transmit_freq):$/;"	m	class:Transceiver
+generate_final_if_receive_waveforms	radar/model/transceiver/transceiver.py	/^    def generate_final_if_receive_waveforms(self, awf, fs, transmit_freq):$/;"	m	class:Transceiver
+get_received_waveform_from_point_target	radar/model/antenna.py	/^    def get_received_waveform_from_point_target(self, waveforms, r, velocity, fs):$/;"	m	class:Antenna
+get_received_waveform_from_point_target	radar/model/antenna/antenna.py	/^    def get_received_waveform_from_point_target(self, waveforms, r, velocity, fs):$/;"	m	class:Antenna
+get_reflection_vector	radar/model/environment.py	/^    def get_reflection_vector(self, position, angle, max_distance):$/;"	m	class:Environment
+get_reflection_vector	radar/model/environment/environment.py	/^    def get_reflection_vector(self, position, angle, max_distance):$/;"	m	class:Environment
+impedance	radar/model/transceiver.py	/^    def impedance(self):$/;"	m	class:Transceiver
+impedance	radar/model/transceiver.py	/^    def impedance(self, value):$/;"	m	class:Transceiver
+impedance	radar/model/transceiver/transceiver.py	/^    def impedance(self):$/;"	m	class:Transceiver
+impedance	radar/model/transceiver/transceiver.py	/^    def impedance(self, value):$/;"	m	class:Transceiver
+impedance	radar/presenter/presenter.py	/^    def impedance(self, adouble):$/;"	m	class:Presenter
+info	radar/model/environment/pointtarget.py	/^    def info(self):$/;"	m	class:PointTarget
+is	radar/model/radar.py	/^from pyqtgraph.Qt import QtCore     # This is unfortunate. But I will use this package for$/;"	i
+lengthbetweensamples	radar/model/antenna.py	/^	lengthbetweensamples = 1.0 \/ fs * const.c$/;"	v	class:Antenna
+lengthbetweensamples	radar/model/antenna/antenna.py	/^	lengthbetweensamples = 1.0 \/ fs * const.c$/;"	v	class:Antenna
+lfilter	radar/model/waveforms.py	/^from scipy.signal import lfilter, butter, bessel$/;"	i
+listen	radar/model/antenna.py	/^    def listen(self, power, transmitted_freq, waveforms, listening_time, fs):$/;"	m	class:Antenna
+listen	radar/model/antenna/antenna.py	/^    def listen(self, power, transmitted_freq, waveforms, listening_time, pulsewidth, fs, impedance):$/;"	m	class:Antenna
+listeningtime	radar/model/transceiver.py	/^    def listeningtime(self):$/;"	m	class:Transceiver
+listeningtime	radar/model/transceiver.py	/^    def listeningtime(self, value):$/;"	m	class:Transceiver
+listeningtime	radar/model/transceiver/transceiver.py	/^    def listeningtime(self):$/;"	m	class:Transceiver
+listeningtime	radar/model/transceiver/transceiver.py	/^    def listeningtime(self, value):$/;"	m	class:Transceiver
+listeningtime	radar/presenter/presenter.py	/^    def listeningtime(self, adouble):$/;"	m	class:Presenter
+listofnoeditwhiletransmit	radar/presenter/presenter.py	/^    def listofnoeditwhiletransmit(self):$/;"	m	class:Presenter
+listofnoeditwhiletransmit	radar/presenter/presenter.py	/^    def listofnoeditwhiletransmit(self, pointer):$/;"	m	class:Presenter
+loadUiType	radar/view/mymainwindow.py	/^from pyqtgraph.Qt import loadUiType$/;"	i
+main_lobe_beamwidth	radar/model/antenna.py	/^    def main_lobe_beamwidth(self):$/;"	m	class:Antenna
+main_lobe_beamwidth	radar/model/antenna.py	/^    def main_lobe_beamwidth(self, value):$/;"	m	class:Antenna
+main_lobe_beamwidth	radar/model/antenna/antenna.py	/^    def main_lobe_beamwidth(self):$/;"	m	class:Antenna
+main_lobe_beamwidth	radar/model/antenna/antenna.py	/^    def main_lobe_beamwidth(self, value):$/;"	m	class:Antenna
+main_lobe_gain	radar/model/antenna.py	/^    def main_lobe_gain(self):$/;"	m	class:Antenna
+main_lobe_gain	radar/model/antenna.py	/^    def main_lobe_gain(self, value):$/;"	m	class:Antenna
+main_lobe_gain	radar/model/antenna/antenna.py	/^    def main_lobe_gain(self):$/;"	m	class:Antenna
+main_lobe_gain	radar/model/antenna/antenna.py	/^    def main_lobe_gain(self, value):$/;"	m	class:Antenna
+matplotlib	radar/model/waveforms.py	/^import matplotlib.pyplot as plt$/;"	i
+max_abs_velocity	radar/model/simulation_constants.py	/^	def max_abs_velocity(self):$/;"	m	class:Simulation_Constants
+max_abs_velocity	radar/model/simulation_constants.py	/^	def max_abs_velocity(self, value):$/;"	m	class:Simulation_Constants
+model	radar/coretest.py	/^    model = Radar()$/;"	v
+model	radar/model/antenna/antenna.py	/^import model.radarequations as radarequations$/;"	i
+model	radar/model/antenna/antenna.py	/^import model.waveforms as wfs$/;"	i
+model	radar/model/transceiver/transceiver.py	/^import model.radarequations as radarequations$/;"	i
+model	radar/model/transceiver/transceiver.py	/^import model.waveforms as wfs$/;"	i
+model	radar/presenter/presenter.py	/^    def model(self):$/;"	m	class:Presenter
+model	radar/presenter/presenter.py	/^    def model(self, amodel):$/;"	m	class:Presenter
+mw_from_dbm	radar/model/radarequations.py	/^def mw_from_dbm(dbm):$/;"	f
+nbrofdopplers	radar/model/transceiver.py	/^	nbrofdopplers = nbrofdopplers.astype(int)$/;"	v	class:Transceiver
+nbrofdopplers	radar/model/transceiver/transceiver.py	/^	nbrofdopplers = nbrofdopplers.astype(int)$/;"	v	class:Transceiver
+nbrofsamples	radar/model/waveforms.py	/^    def nbrofsamples(self,fs):			# Gives the nbr of samples for a hypothetical fs$/;"	m	class:Analogue_Waveform
+noise	radar/presenter/presenter.py	/^    def noise(self):$/;"	m	class:Presenter
+noise_figure	radar/model/transceiver.py	/^    def noise_figure(self):$/;"	m	class:Transceiver
+noise_figure	radar/model/transceiver.py	/^    def noise_figure(self, value):$/;"	m	class:Transceiver
+noise_figure	radar/model/transceiver/transceiver.py	/^    def noise_figure(self):$/;"	m	class:Transceiver
+noise_figure	radar/model/transceiver/transceiver.py	/^    def noise_figure(self, value):$/;"	m	class:Transceiver
+noise_vrms	radar/model/radarequations.py	/^def noise_vrms(T, B, Fn, R=50.0):$/;"	f
+noisefigure	radar/presenter/presenter.py	/^    def noisefigure(self, adouble):$/;"	m	class:Presenter
+np	radar/model/antenna.py	/^import numpy as np$/;"	i
+np	radar/model/antenna/antenna.py	/^import numpy as np$/;"	i
+np	radar/model/environment.py	/^import numpy as np$/;"	i
+np	radar/model/environment/environment.py	/^import numpy as np$/;"	i
+np	radar/model/radarequations.py	/^import numpy as np$/;"	i
+np	radar/model/transceiver.py	/^import numpy as np$/;"	i
+np	radar/model/transceiver/transceiver.py	/^import numpy as np$/;"	i
+np	radar/model/waveforms.py	/^import numpy as np$/;"	i
+nsamples	radar/model/waveforms.py	/^def nsamples(fs, timelength):$/;"	f
+p_rec	radar/model/radarequations.py	/^def p_rec(p_tr, gain, sigma, freq, r):	$/;"	f
+package	radar/model/radar.py	/^from pyqtgraph.Qt import QtCore     # This is unfortunate. But I will use this package for$/;"	i
+partial	radar/model/waveforms.py	/^from functools import partial$/;"	i
+pg	radar/coretest.py	/^import pyqtgraph as pg$/;"	i
+pg	radar/view/mymainwindow.py	/^import pyqtgraph as pg$/;"	i
+phase	radar/model/waveforms.py	/^    def phase(self, timespan, aphasecode, t):$/;"	m	class:Analogue_Waveform
+phase_func	radar/model/waveforms.py	/^    def phase_func(self):$/;"	m	class:Analogue_Waveform
+phase_func	radar/model/waveforms.py	/^    def phase_func(self, afunc):$/;"	m	class:Analogue_Waveform
+plot	radar/model/waveforms.py	/^from pylab import plot, show, title, xlabel, ylabel, subplot, ylim$/;"	i
+plt	radar/model/waveforms.py	/^import matplotlib.pyplot as plt$/;"	i
+pointtargets	radar/model/environment/environment.py	/^    def pointtargets(self):$/;"	m	class:Environment
+pointtargets	radar/model/environment/environment.py	/^    def pointtargets(self, pointer):$/;"	m	class:Environment
+position	radar/model/antenna.py	/^    def position(self):$/;"	m	class:Antenna
+position	radar/model/antenna.py	/^    def position(self, value):$/;"	m	class:Antenna
+position	radar/model/antenna/antenna.py	/^    def position(self):$/;"	m	class:Antenna
+position	radar/model/antenna/antenna.py	/^    def position(self, value):$/;"	m	class:Antenna
+power	radar/model/transceiver.py	/^    def power(self):$/;"	m	class:Transceiver
+power	radar/model/transceiver.py	/^    def power(self, value):$/;"	m	class:Transceiver
+power	radar/model/transceiver/transceiver.py	/^    def power(self):$/;"	m	class:Transceiver
+power	radar/model/transceiver/transceiver.py	/^    def power(self, value):$/;"	m	class:Transceiver
+power	radar/presenter/presenter.py	/^    def power(self, adouble):$/;"	m	class:Presenter
+presenter	radar/coretest.py	/^    presenter = Presenter(model, view)$/;"	v
+prf	radar/model/radar.py	/^    def prf(self):$/;"	m	class:Radar
+prf	radar/model/radar.py	/^    def prf(self, value):$/;"	m	class:Radar
+prf	radar/presenter/presenter.py	/^    def prf(self, adouble):$/;"	m	class:Presenter
+pulsewidth	radar/model/transceiver.py	/^    def pulsewidth(self):$/;"	m	class:Transceiver
+pulsewidth	radar/model/transceiver.py	/^    def pulsewidth(self, value):$/;"	m	class:Transceiver
+pulsewidth	radar/model/transceiver/transceiver.py	/^    def pulsewidth(self):$/;"	m	class:Transceiver
+pulsewidth	radar/model/transceiver/transceiver.py	/^    def pulsewidth(self, value):$/;"	m	class:Transceiver
+pulsewidth	radar/presenter/presenter.py	/^    def pulsewidth(self, adouble):$/;"	m	class:Presenter
+r	radar/model/environment/pointtarget.py	/^    def r(self):$/;"	m	class:PointTarget
+r	radar/model/environment/pointtarget.py	/^    def r(self, avalue):$/;"	m	class:PointTarget
+radar	tests/radar_tests.py	/^import radar$/;"	i
+radar_setup	radar/model/radar.py	/^    def radar_setup(self):$/;"	m	class:Radar
+radar_state	radar/model/radar.py	/^    def radar_state(self):$/;"	m	class:Radar
+radar_state	radar/model/radar.py	/^    def radar_state(self, newstate):$/;"	m	class:Radar
+radarequations	radar/model/antenna.py	/^import radarequations$/;"	i
+radarequations	radar/model/antenna/antenna.py	/^import model.radarequations as radarequations$/;"	i
+radarequations	radar/model/transceiver.py	/^import radarequations$/;"	i
+radarequations	radar/model/transceiver/transceiver.py	/^import model.radarequations as radarequations$/;"	i
+radarevent	radar/presenter/presenter.py	/^    def radarevent(self, *args):$/;"	m	class:Presenter
+rcs	radar/model/environment/pointtarget.py	/^    def rcs(self):$/;"	m	class:PointTarget
+rcs	radar/model/environment/pointtarget.py	/^    def rcs(self, avalue):$/;"	m	class:PointTarget
+reflection_array	radar/model/environment.py	/^	reflection_array = np.array([(max_distance \/ 2.0, 170.0, 100.0)])#, (max_distance \/ 6, 0.0, 10.0), (max_distance \/ 5, 242.0, 10.0), (max_distance * 9 \/ 10, -11.3, 10.0)]) # [(r,v,rcs)]$/;"	v	class:Environment
+reinitialize	radar/presenter/presenter.py	/^    def reinitialize(self):$/;"	m	class:Presenter
+sample_frequency	radar/model/transceiver.py	/^    def sample_frequency(self):$/;"	m	class:Transceiver
+sample_frequency	radar/model/transceiver.py	/^    def sample_frequency(self, value):$/;"	m	class:Transceiver
+sample_frequency	radar/model/transceiver/transceiver.py	/^    def sample_frequency(self):$/;"	m	class:Transceiver
+sample_frequency	radar/model/transceiver/transceiver.py	/^    def sample_frequency(self, value):$/;"	m	class:Transceiver
+samplefrequency	radar/presenter/presenter.py	/^    def samplefrequency(self, adouble):$/;"	m	class:Presenter
+sc	radar/model/antenna.py	/^import scipy as sc$/;"	i
+sc	radar/model/environment.py	/^import scipy as sc$/;"	i
+sc	radar/model/transceiver.py	/^import scipy as sc$/;"	i
+scipy	radar/model/antenna.py	/^import scipy.constants as const$/;"	i
+scipy	radar/model/antenna/antenna.py	/^import scipy.constants as const$/;"	i
+scipy	radar/model/environment.py	/^import scipy.constants as const$/;"	i
+scipy	radar/model/radar.py	/^import scipy.constants as const$/;"	i
+scipy	radar/model/radarequations.py	/^import scipy.constants as const$/;"	i
+scipy	radar/model/transceiver.py	/^import scipy.constants as const$/;"	i
+scipy	radar/model/transceiver/transceiver.py	/^import scipy.constants as const$/;"	i
+scipy	radar/model/waveforms.py	/^import scipy.constants as const$/;"	i
+scipy	radar/presenter/presenter.py	/^import scipy.constants as const$/;"	i
+set_biphase_waveform	radar/model/transceiver.py	/^    def set_biphase_waveform(self, aphasecode):$/;"	m	class:Transceiver
+set_biphase_waveform	radar/model/transceiver/transceiver.py	/^    def set_biphase_waveform(self, aphasecode):$/;"	m	class:Transceiver
+set_biphasecode	radar/model/waveforms.py	/^    def set_biphasecode(self, freq, phasecode):$/;"	m	class:Analogue_Waveform
+set_chirp	radar/model/waveforms.py	/^    def set_chirp(self, lowfreq, highfreq):$/;"	m	class:Analogue_Waveform
+set_chirp_waveform	radar/model/transceiver.py	/^    def set_chirp_waveform(self, freq_low, freq_high):$/;"	m	class:Transceiver
+set_chirp_waveform	radar/model/transceiver/transceiver.py	/^    def set_chirp_waveform(self, freq_low, freq_high):$/;"	m	class:Transceiver
+set_r_target_1	radar/model/environment/environment.py	/^    def set_r_target_1(self, value):$/;"	m	class:Environment
+set_r_target_2	radar/model/environment/environment.py	/^    def set_r_target_2(self, value):$/;"	m	class:Environment
+set_rcs_target_1	radar/model/environment/environment.py	/^    def set_rcs_target_1(self, value):$/;"	m	class:Environment
+set_rcs_target_2	radar/model/environment/environment.py	/^    def set_rcs_target_2(self, value):$/;"	m	class:Environment
+set_rect	radar/model/waveforms.py	/^    def set_rect(self, freq):$/;"	m	class:Analogue_Waveform
+set_rectangular_waveform	radar/model/transceiver.py	/^    def set_rectangular_waveform(self):$/;"	m	class:Transceiver
+set_rectangular_waveform	radar/model/transceiver/transceiver.py	/^    def set_rectangular_waveform(self):$/;"	m	class:Transceiver
+set_v_target_1	radar/model/environment/environment.py	/^    def set_v_target_1(self, value):$/;"	m	class:Environment
+set_v_target_2	radar/model/environment/environment.py	/^    def set_v_target_2(self, value):$/;"	m	class:Environment
+setup	setup.py	/^	from distutils.core import setup$/;"	i
+setup	setup.py	/^	from setuptools import setup$/;"	i
+setup	tests/radar_tests.py	/^def setup():$/;"	f
+setup_plotwidget	radar/presenter/presenter.py	/^    def setup_plotwidget(self):$/;"	m	class:Presenter
+setup_pointtargets	radar/model/environment/environment.py	/^    def setup_pointtargets(self):$/;"	m	class:Environment
+show	radar/model/waveforms.py	/^    def show(self):$/;"	m	class:Sampled_Waveform
+show	radar/model/waveforms.py	/^from pylab import plot, show, title, xlabel, ylabel, subplot, ylim$/;"	i
+simulation_globals	radar/model/antenna.py	/^    def simulation_globals(self):$/;"	m	class:Antenna
+simulation_globals	radar/model/antenna.py	/^    def simulation_globals(self, pointer):$/;"	m	class:Antenna
+simulation_globals	radar/model/antenna/antenna.py	/^    def simulation_globals(self):$/;"	m	class:Antenna
+simulation_globals	radar/model/antenna/antenna.py	/^    def simulation_globals(self, pointer):$/;"	m	class:Antenna
+simulation_globals	radar/model/radar.py	/^    def simulation_globals(self):$/;"	m	class:Radar
+simulation_globals	radar/model/radar.py	/^    def simulation_globals(self, pointer):$/;"	m	class:Radar
+simulation_globals	radar/model/transceiver.py	/^    def simulation_globals(self):$/;"	m	class:Transceiver
+simulation_globals	radar/model/transceiver.py	/^    def simulation_globals(self, pointer):$/;"	m	class:Transceiver
+simulation_globals	radar/model/transceiver/transceiver.py	/^    def simulation_globals(self):$/;"	m	class:Transceiver
+simulation_globals	radar/model/transceiver/transceiver.py	/^    def simulation_globals(self, pointer):$/;"	m	class:Transceiver
+spatial_resolution	radar/model/simulation_constants.py	/^	def spatial_resolution(self):$/;"	m	class:Simulation_Constants
+spatial_resolution	radar/model/simulation_constants.py	/^	def spatial_resolution(self, value):$/;"	m	class:Simulation_Constants
+start	radar/presenter/presenter.py	/^    def start(self):$/;"	m	class:Presenter
+stc	radar/presenter/presenter.py	/^    def stc(self):$/;"	m	class:Presenter
+stop	radar/presenter/presenter.py	/^    def stop(self):$/;"	m	class:Presenter
+subplot	radar/model/waveforms.py	/^from pylab import plot, show, title, xlabel, ylabel, subplot, ylim$/;"	i
+subscribe	radar/observable/observable.py	/^    def subscribe(self, subscriber):    # Register new subscriber.$/;"	m	class:Observable
+target_1	radar/model/environment/environment.py	/^    def target_1(self):$/;"	m	class:Environment
+target_1	radar/model/environment/environment.py	/^    def target_1(self, pointer):$/;"	m	class:Environment
+target_2	radar/model/environment/environment.py	/^    def target_2(self):$/;"	m	class:Environment
+target_2	radar/model/environment/environment.py	/^    def target_2(self, pointer):$/;"	m	class:Environment
+targetone_distance	radar/presenter/presenter.py	/^    def targetone_distance(self, adouble):$/;"	m	class:Presenter
+targetone_rcs	radar/presenter/presenter.py	/^    def targetone_rcs(self, adouble):$/;"	m	class:Presenter
+targetone_velocity	radar/presenter/presenter.py	/^    def targetone_velocity(self, adouble):$/;"	m	class:Presenter
+targettwo_distance	radar/presenter/presenter.py	/^    def targettwo_distance(self, adouble):$/;"	m	class:Presenter
+targettwo_rcs	radar/presenter/presenter.py	/^    def targettwo_rcs(self, adouble):$/;"	m	class:Presenter
+targettwo_velocity	radar/presenter/presenter.py	/^    def targettwo_velocity(self, adouble):$/;"	m	class:Presenter
+teardown	tests/radar_tests.py	/^def teardown():$/;"	f
+temperature	radar/model/transceiver.py	/^    def temperature(self):$/;"	m	class:Transceiver
+temperature	radar/model/transceiver.py	/^    def temperature(self, value):$/;"	m	class:Transceiver
+temperature	radar/model/transceiver/transceiver.py	/^    def temperature(self):$/;"	m	class:Transceiver
+temperature	radar/model/transceiver/transceiver.py	/^    def temperature(self, value):$/;"	m	class:Transceiver
+temperature	radar/presenter/presenter.py	/^    def temperature(self, adouble):$/;"	m	class:Presenter
+test_basic	tests/radar_tests.py	/^def test_basic():$/;"	f
+this	radar/model/radar.py	/^from pyqtgraph.Qt import QtCore     # This is unfortunate. But I will use this package for$/;"	i
+time	radar/model/transceiver.py	/^import time$/;"	i
+time	radar/model/transceiver/transceiver.py	/^import time$/;"	i
+timelength	radar/model/waveforms.py	/^    def timelength(self):$/;"	m	class:Analogue_Waveform
+timelength	radar/model/waveforms.py	/^    def timelength(self):$/;"	m	class:Sampled_Waveform
+timelength	radar/model/waveforms.py	/^    def timelength(self, value):$/;"	m	class:Analogue_Waveform
+timevector	radar/model/waveforms.py	/^    def timevector(self):$/;"	m	class:Sampled_Waveform
+title	radar/model/waveforms.py	/^from pylab import plot, show, title, xlabel, ylabel, subplot, ylim$/;"	i
+to_dB	radar/model/radarequations.py	/^def to_dB(ggr):$/;"	f
+toggle_noise	radar/model/transceiver.py	/^    def toggle_noise(self, newstate):$/;"	m	class:Transceiver
+toggle_noise	radar/model/transceiver/transceiver.py	/^    def toggle_noise(self, newstate):$/;"	m	class:Transceiver
+toggle_radar_state	radar/model/radar.py	/^    def toggle_radar_state(self, newstate):$/;"	m	class:Radar
+toggle_stc	radar/model/transceiver.py	/^    def toggle_stc(self, newstate):$/;"	m	class:Transceiver
+toggle_stc	radar/model/transceiver/transceiver.py	/^    def toggle_stc(self, newstate):$/;"	m	class:Transceiver
+transceiver	radar/model/radar.py	/^    def transceiver(self):$/;"	m	class:Radar
+transceiver	radar/model/radar.py	/^    def transceiver(self, pointer):$/;"	m	class:Radar
+transmit_and_listen	radar/model/transceiver.py	/^    def transmit_and_listen(self):$/;"	m	class:Transceiver
+transmit_and_listen	radar/model/transceiver/transceiver.py	/^    def transmit_and_listen(self):$/;"	m	class:Transceiver
+transmit_frequency	radar/model/transceiver.py	/^    def transmit_frequency(self):$/;"	m	class:Transceiver
+transmit_frequency	radar/model/transceiver.py	/^    def transmit_frequency(self, value):$/;"	m	class:Transceiver
+transmit_frequency	radar/model/transceiver/transceiver.py	/^    def transmit_frequency(self):$/;"	m	class:Transceiver
+transmit_frequency	radar/model/transceiver/transceiver.py	/^    def transmit_frequency(self, value):$/;"	m	class:Transceiver
+transmitfrequency	radar/presenter/presenter.py	/^    def transmitfrequency(self, adouble):$/;"	m	class:Presenter
+ui	radar/view/mymainwindow.py	/^    def ui(self):$/;"	m	class:MyMainWindow
+ui	radar/view/mymainwindow.py	/^    def ui(self, pointer):$/;"	m	class:MyMainWindow
+unfortunate	radar/model/radar.py	/^from pyqtgraph.Qt import QtCore     # This is unfortunate. But I will use this package for$/;"	i
+update_targets	radar/model/environment/environment.py	/^    def update_targets(self, delta_t):$/;"	m	class:Environment
+update_view_values	radar/presenter/presenter.py	/^    def update_view_values(self):$/;"	m	class:Presenter
+use	radar/model/radar.py	/^from pyqtgraph.Qt import QtCore     # This is unfortunate. But I will use this package for$/;"	i
+v	radar/model/environment/pointtarget.py	/^    def v(self):$/;"	m	class:PointTarget
+v	radar/model/environment/pointtarget.py	/^    def v(self, avalue):$/;"	m	class:PointTarget
+view	radar/coretest.py	/^    view = MyMainWindow()$/;"	v
+view	radar/presenter/presenter.py	/^    def view(self):$/;"	m	class:Presenter
+view	radar/presenter/presenter.py	/^    def view(self, aview):$/;"	m	class:Presenter
+vpeak_from_dbm	radar/model/radarequations.py	/^def vpeak_from_dbm(dbm, R=50.0):$/;"	f
+vpeak_from_mw	radar/model/radarequations.py	/^def vpeak_from_mw(mw, R=50.0):$/;"	f
+vrms_from_dbm	radar/model/radarequations.py	/^def vrms_from_dbm(dbm, R=50.0):$/;"	f
+vrms_from_mw	radar/model/radarequations.py	/^def vrms_from_mw(mw, R=50.0):$/;"	f
+wfs	radar/model/antenna.py	/^import waveforms as wfs$/;"	i
+wfs	radar/model/antenna/antenna.py	/^import model.waveforms as wfs$/;"	i
+wfs	radar/model/transceiver.py	/^import waveforms as wfs$/;"	i
+wfs	radar/model/transceiver/transceiver.py	/^import model.waveforms as wfs$/;"	i
+will	radar/model/radar.py	/^from pyqtgraph.Qt import QtCore     # This is unfortunate. But I will use this package for$/;"	i
+xlabel	radar/model/waveforms.py	/^from pylab import plot, show, title, xlabel, ylabel, subplot, ylim$/;"	i
+ylabel	radar/model/waveforms.py	/^from pylab import plot, show, title, xlabel, ylabel, subplot, ylim$/;"	i
+ylim	radar/model/waveforms.py	/^from pylab import plot, show, title, xlabel, ylabel, subplot, ylim$/;"	i
