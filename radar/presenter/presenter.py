@@ -66,20 +66,14 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
         self.view.ui.pushButton_reinitialize.setEnabled(False)
         self.model.toggle_radar_state('ON')
 
-
-
     def stop(self):
         for each in self.listofnoeditwhiletransmit:
             each.setReadOnly(False)
         self.view.ui.pushButton_reinitialize.setEnabled(True)
         self.model.toggle_radar_state('OFF')
 
-
-
     def reinitialize(self):
         self.model.transceiver.set_rectangular_waveform()
-
-
 
     def noise(self):
         if self.view.ui.checkBox_noise.isChecked():
@@ -87,15 +81,14 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
         else:
             self.model.transceiver.toggle_noise('OFF')
 
-
-
     def stc(self):
         if self.view.ui.checkBox_stc.isChecked():
             self.model.transceiver.toggle_stc('ON')
         else:
             self.model.transceiver.toggle_stc('OFF')
 
-
+    def stcvalue(self, anint):
+        self.model.transceiver.stc_choice = anint / 10 - 1
 
     # Radar Actions
 
@@ -106,7 +99,7 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
         self.model.sample_frequency = adouble * 1.0e6
 
     def listeningtime(self, adouble):
-        self.model.transceiver.listeningtime = adouble * 1.0e-6
+        self.model.transceiver.change_listeningtime(adouble * 1.0e-6)   # Due to stc recalculation necessary when listeningtime changes.
 
     # Transmitter Actions
 
@@ -143,7 +136,6 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
 
     def beamwidth(self, adouble):
         self.model.antenna.main_lobe_beamwidth = adouble
-
 
     # Environment Actions
 
@@ -189,7 +181,11 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
     # Update (parts of) the view.
 
     def update_view_values(self):
-        
+
+        # Controls view
+
+        self.view.ui.spinBox_stcvalue.setValue( (self.model.transceiver.stc_choice + 1) * 10 )
+
         # Radar view
 
         self.view.ui.doubleSpinBox_samplefrequency.setValue(self.model.transceiver.sample_frequency / 1.0e6)
@@ -262,6 +258,7 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
         self.view.connect(self.view.ui.checkBox_noise, QtCore.SIGNAL("stateChanged(int)"), self.noise)
         self.view.connect(self.view.ui.checkBox_stc, QtCore.SIGNAL("stateChanged(int)"), self.stc)
         self.view.connect(self.view.ui.pushButton_reinitialize, QtCore.SIGNAL("clicked()"), self.reinitialize)
+        self.view.connect(self.view.ui.spinBox_stcvalue, QtCore.SIGNAL("valueChanged(int)"), self.stcvalue)
 
 	# Radar
 

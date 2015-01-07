@@ -71,6 +71,7 @@ bessel	radar/model/waveforms.py	/^from scipy.signal import lfilter, butter, bess
 butter	radar/model/waveforms.py	/^from scipy.signal import lfilter, butter, bessel$/;"	i
 calculate_received_beam_waveform	radar/model/antenna.py	/^    def calculate_received_beam_waveform(self, position, angle, power, transmitted_freq, gain, beamwidth, waveforms, listening_time, fs):$/;"	m	class:Antenna
 calculate_received_beam_waveform	radar/model/antenna/antenna.py	/^    def calculate_received_beam_waveform(self, position, angle, power, transmitted_freq, gain, beamwidth, waveforms, listening_time, pulsewidth, fs, impedance):$/;"	m	class:Antenna
+change_listeningtime	radar/model/transceiver/transceiver.py	/^    def change_listeningtime(self, newtime):$/;"	m	class:Transceiver
 chirp	radar/model/waveforms.py	/^    def chirp(self, timespan, lowfreq, highfreq, t):$/;"	m	class:Analogue_Waveform
 config	setup.py	/^config = {$/;"	v
 connect_signals	radar/presenter/presenter.py	/^    def connect_signals(self):$/;"	m	class:Presenter
@@ -101,6 +102,7 @@ environment	radar/model/antenna/antenna.py	/^    def environment(self, value):$/
 environment	radar/model/radar.py	/^    def environment(self):$/;"	m	class:Radar
 environment	radar/model/radar.py	/^    def environment(self, pointer):$/;"	m	class:Radar
 execute	radar/model/radar.py	/^    def execute(self):$/;"	m	class:Radar
+f	radar/model/transceiver/transceiver.py	/^        def f(r):$/;"	f	function:Transceiver.generate_stc_vector
 final_if	radar/model/transceiver.py	/^    def final_if(self):$/;"	m	class:Transceiver
 final_if	radar/model/transceiver.py	/^    def final_if(self, value):$/;"	m	class:Transceiver
 final_if	radar/model/transceiver/transceiver.py	/^    def final_if(self):$/;"	m	class:Transceiver
@@ -119,9 +121,12 @@ freq_func	radar/model/waveforms.py	/^    def freq_func(self):$/;"	m	class:Analog
 freq_func	radar/model/waveforms.py	/^    def freq_func(self, afunc):$/;"	m	class:Analogue_Waveform
 from_dB	radar/model/radarequations.py	/^def from_dB(db):$/;"	f
 fs	radar/model/waveforms.py	/^    def fs(self):$/;"	m	class:Sampled_Waveform
+g	radar/model/transceiver/transceiver.py	/^        def g(r):$/;"	f	function:Transceiver.generate_stc_vector
 gain	radar/presenter/presenter.py	/^    def gain(self, adouble):$/;"	m	class:Presenter
 generate_final_if_receive_waveforms	radar/model/transceiver.py	/^    def generate_final_if_receive_waveforms(self, awf, fs, transmit_freq):$/;"	m	class:Transceiver
 generate_final_if_receive_waveforms	radar/model/transceiver/transceiver.py	/^    def generate_final_if_receive_waveforms(self, awf, fs, transmit_freq):$/;"	m	class:Transceiver
+generate_stc_vector	radar/model/transceiver/transceiver.py	/^    def generate_stc_vector(self, R):$/;"	m	class:Transceiver
+generate_stc_vectors	radar/model/transceiver/transceiver.py	/^    def generate_stc_vectors(self):         # This method MUST be called if the listeningtime changes!!!!!$/;"	m	class:Transceiver
 get_received_waveform_from_point_target	radar/model/antenna.py	/^    def get_received_waveform_from_point_target(self, waveforms, r, velocity, fs):$/;"	m	class:Antenna
 get_received_waveform_from_point_target	radar/model/antenna/antenna.py	/^    def get_received_waveform_from_point_target(self, waveforms, r, velocity, fs):$/;"	m	class:Antenna
 get_reflection_vector	radar/model/environment.py	/^    def get_reflection_vector(self, position, angle, max_distance):$/;"	m	class:Environment
@@ -216,6 +221,7 @@ pulsewidth	radar/model/transceiver/transceiver.py	/^    def pulsewidth(self, val
 pulsewidth	radar/presenter/presenter.py	/^    def pulsewidth(self, adouble):$/;"	m	class:Presenter
 r	radar/model/environment/pointtarget.py	/^    def r(self):$/;"	m	class:PointTarget
 r	radar/model/environment/pointtarget.py	/^    def r(self, avalue):$/;"	m	class:PointTarget
+r	radar/model/transceiver/transceiver.py	/^        def r(i):$/;"	f	function:Transceiver.generate_stc_vector
 radar	tests/radar_tests.py	/^import radar$/;"	i
 radar_setup	radar/model/radar.py	/^    def radar_setup(self):$/;"	m	class:Radar
 radar_state	radar/model/radar.py	/^    def radar_state(self):$/;"	m	class:Radar
@@ -282,6 +288,7 @@ spatial_resolution	radar/model/simulation_constants.py	/^	def spatial_resolution
 spatial_resolution	radar/model/simulation_constants.py	/^	def spatial_resolution(self, value):$/;"	m	class:Simulation_Constants
 start	radar/presenter/presenter.py	/^    def start(self):$/;"	m	class:Presenter
 stc	radar/presenter/presenter.py	/^    def stc(self):$/;"	m	class:Presenter
+stcvalue	radar/presenter/presenter.py	/^    def stcvalue(self, anint):$/;"	m	class:Presenter
 stop	radar/presenter/presenter.py	/^    def stop(self):$/;"	m	class:Presenter
 subplot	radar/model/waveforms.py	/^from pylab import plot, show, title, xlabel, ylabel, subplot, ylim$/;"	i
 subscribe	radar/observable/observable.py	/^    def subscribe(self, subscriber):    # Register new subscriber.$/;"	m	class:Observable
@@ -304,7 +311,6 @@ temperature	radar/presenter/presenter.py	/^    def temperature(self, adouble):$/
 test_basic	tests/radar_tests.py	/^def test_basic():$/;"	f
 this	radar/model/radar.py	/^from pyqtgraph.Qt import QtCore     # This is unfortunate. But I will use this package for$/;"	i
 time	radar/model/transceiver.py	/^import time$/;"	i
-time	radar/model/transceiver/transceiver.py	/^import time$/;"	i
 timelength	radar/model/waveforms.py	/^    def timelength(self):$/;"	m	class:Analogue_Waveform
 timelength	radar/model/waveforms.py	/^    def timelength(self):$/;"	m	class:Sampled_Waveform
 timelength	radar/model/waveforms.py	/^    def timelength(self, value):$/;"	m	class:Analogue_Waveform

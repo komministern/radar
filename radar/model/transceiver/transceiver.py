@@ -8,7 +8,7 @@ import numpy as np
 #import scipy as sc
 import scipy.constants as const
 import model.radarequations as radarequations
-import time
+#import time
 
 
 class Transceiver(object):
@@ -45,7 +45,15 @@ class Transceiver(object):
         self.noise_state = None
         self.stc_state = None
 
+        self.stc_vectors = None#
+        self.stc_choice = 2#
+
+#        self.stc_function = None#
+
+#        self.stc_func = np.vectorize(self.stc_vector)
+
         super(Transceiver, self).__init__(**kwds)
+
 
 
     # GETTERS AND SETTERS
@@ -122,7 +130,6 @@ class Transceiver(object):
     def sample_frequency(self, value):
     	self._sample_frequency = value
 
-
     # final_if_transmit_waveform 
 
     @property
@@ -195,6 +202,8 @@ class Transceiver(object):
 
 
 
+
+
     # *** METHODS ***
 
 
@@ -208,8 +217,13 @@ class Transceiver(object):
             self.stc_state = newstate
 
 
+    def change_listeningtime(self, newtime):
+        self.listeningtime = newtime
+        self.generate_stc_vectors()
 
 
+
+    # *** CREATE WAVEFORMS STUFF ***
 
 
     def generate_final_if_receive_waveforms(self, awf, fs, transmit_freq):
@@ -241,7 +255,7 @@ class Transceiver(object):
 
 	    	waveforms[delaybin, dopplerbin, :] += awf.digitize(fs, doppler_velocity_vector[dopplerbin], transmit_freq, delay_vector[delaybin]) 
 
-#	print time.time() - t0
+        self.generate_stc_vectors()
 
         return wfs.Sampled_Waveform(waveforms, fs)
 		
@@ -255,7 +269,6 @@ class Transceiver(object):
     	awf.set_rect(self.final_if)
 		
     	self.final_if_transmit_waveform = awf.digitize(self.sample_frequency, 0.0, self.transmit_frequency, 0.0)
-#        self.final_if_transmit_waveform.show()
 
     	self.final_if_receive_waveforms = self.generate_final_if_receive_waveforms(awf, self.sample_frequency, self.transmit_frequency)
 		
@@ -282,24 +295,70 @@ class Transceiver(object):
 
     	self.final_if_transmit_waveform = awf.digitize(self.sample_frequency, 0.0, self.transmit_frequency, 0.0)
 
-#        self.final_if_transmit_waveform.show()
-
     	self.final_if_receive_waveforms = self.generate_final_if_receive_waveforms(awf, self.sample_frequency, self.transmit_frequency)
 
 
 
+
+
+    # *** STC STUFF ***
+
+
+    def generate_stc_vectors(self):         # This method MUST be called if the listeningtime changes!!!!!
+        self.stc_vectors = np.array([self.generate_stc_vector(each * 1.0e4) for each in np.arange(1, 6)])
+
+
+    def generate_stc_vector(self, R):
+        
+        # Now, we shall generate a vector to multiplicate the listen vector with. The function I have in mind is f ~ r^2, or something
+        # very similar. The beginning of the listen vector is at r=Tpw * c / 2, not zero. The ith bin in the listen vector corresponds to
+        # r(i) = (i/fs + tpw) * c / 2, more or less.
+
+        awf = wfs.Analogue_Waveform()
+        awf.timelength = self.listeningtime
+
+        nsamples = awf.nbrofsamples(self.sample_frequency)
+
+        #def i(t):
+        #    return np.fix(t * self.sample_frequency).astype(int)
+
+        def r(i):
+            return (1.0 * i / self.sample_frequency + self.pulsewidth) * const.c / 2
+
+        def g(r):
+            return r**2 / R**2
+
+        # The stc shall be active for 20 km, that is, after 20 km the stc is unity. I'll use this silly function for now.
+        
+        def f(r):
+            if r < R:
+                return g(r)
+            else:
+                return 1.0
+
+        return np.array([f(r(element)) for element in np.arange(nsamples)])
+
+
+
+
+    
+        
+
+
     # Send pulse and listen. 
-	
 
     def transmit_and_listen(self):
-    	listen_wf = self.antenna.listen(self.power, self.transmit_frequency, self.final_if_receive_waveforms, self.listeningtime, self.pulsewidth, self.sample_frequency, self.impedance)
+    	self.listen_wf = self.antenna.listen(self.power, self.transmit_frequency, self.final_if_receive_waveforms, self.listeningtime, self.pulsewidth, self.sample_frequency, self.impedance)
 
-#        listen_wf.show()
+        if self.stc_state == 'ON':
+            #print type(stc_vector)
+            #temp = self.stc_vector( 1000 )
+            self.listen_wf *= self.stc_vectors[self.stc_choice]       # This should be faster than using a vectorized function here.
 
         if self.noise_state == 'ON':
-    	    listen_wf += radarequations.noise_vrms(self.temperature, self.bandwidth, self.noise_figure, self.impedance) * np.random.randn( len(listen_wf) )
+    	    self.listen_wf += radarequations.noise_vrms(self.temperature, self.bandwidth, self.noise_figure, self.impedance) * np.random.randn( len(self.listen_wf) )
 
-        return listen_wf
+        return self.listen_wf
 
 
 	
