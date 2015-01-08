@@ -35,6 +35,7 @@ class Transceiver(object):
     	# The best available receiver technology currently limits the receiver’s noise figure to
     	# around 3dB (less is better). -From www.radar-sales.com.
 
+        self.receiver_gain = None   # dB
     	self.noise_figure = None	# dB
 
     	self.impedance = None		# Ohm
@@ -98,7 +99,6 @@ class Transceiver(object):
     @antenna.setter
     def antenna(self, pointer):
     	self._antenna = pointer
-
 
     # transmit_frequency
 
@@ -200,6 +200,7 @@ class Transceiver(object):
     def impedance(self, value):
     	self._impedance = value
 
+    
 
 
 
@@ -227,8 +228,6 @@ class Transceiver(object):
 
 
     def generate_final_if_receive_waveforms(self, awf, fs, transmit_freq):
-	
-#    	t0 = time.time()
 	
     	wavelength_fs = const.c / fs							# In meters
     	nbrofdelays = np.fix(wavelength_fs / self.simulation_globals.spatial_resolution) + 1	# The +1 guarantees the spatial resolution to be better than spatial_res.
@@ -328,7 +327,7 @@ class Transceiver(object):
         def g(r):
             return r**2 / R**2
 
-        # The stc shall be active for 20 km, that is, after 20 km the stc is unity. I'll use this silly function for now.
+        # The stc shall be active for R km, that is, after R km the stc is unity.
         
         def f(r):
             if r < R:
@@ -348,15 +347,14 @@ class Transceiver(object):
     # Send pulse and listen. 
 
     def transmit_and_listen(self):
-    	self.listen_wf = self.antenna.listen(self.power, self.transmit_frequency, self.final_if_receive_waveforms, self.listeningtime, self.pulsewidth, self.sample_frequency, self.impedance)
+    	self.listen_wf = self.antenna.listen(self.power, self.transmit_frequency, self.final_if_receive_waveforms, self.listeningtime, self.pulsewidth, self.sample_frequency, self.impedance, self.receiver_gain)
 
         if self.stc_state == 'ON':
-            #print type(stc_vector)
-            #temp = self.stc_vector( 1000 )
+
             self.listen_wf *= self.stc_vectors[self.stc_choice]       # This should be faster than using a vectorized function here.
 
         if self.noise_state == 'ON':
-    	    self.listen_wf += radarequations.noise_vrms(self.temperature, self.bandwidth, self.noise_figure, self.impedance) * np.random.randn( len(self.listen_wf) )
+    	    self.listen_wf += radarequations.noise_vrms(self.temperature, self.bandwidth, self.noise_figure, self.receiver_gain, self.impedance) * np.random.randn( len(self.listen_wf) )
 
         return self.listen_wf
 

@@ -63,8 +63,8 @@ def from_dB(db):
 # receiver. Noise in a practical receiver is invariably greater by some factor Fn, expressed in Decibels and known as 
 # the noise figure.
 
-def noise_vrms(T, B, Fn, R=50.0):
-	p_noise = const.k * T * B * from_dB(Fn)	# mW
+def noise_vrms(T, B, Fn, Gr, R=50.0):
+	p_noise = const.k * T * B * from_dB(Fn) * from_dB(Gr)	# mW
 	v_rms = np.sqrt(4 * R * p_noise)	# V
 	return v_rms
 	

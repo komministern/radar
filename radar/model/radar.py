@@ -154,6 +154,7 @@ class Radar(Observable):
     	self.transceiver.temperature = 290.0
     	self.transceiver.bandwidth = 50.0e6
     	self.transceiver.noise_figure = 4.0
+        self.transceiver.receiver_gain = 0.0
     	self.transceiver.resistance = 50.0
     	self.transceiver.final_if = 5.0e6
     	self.transceiver.sample_frequency = 63.0e6

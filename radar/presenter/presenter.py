@@ -129,6 +129,9 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
     def noisefigure(self, adouble):
         self.model.transceiver.noise_figure = adouble
 
+    def receivergain(self, adouble):
+        self.model.transceiver.receiver_gain = adouble
+
     # Antenna
 
     def gain(self, adouble):
@@ -209,6 +212,7 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
         self.view.ui.doubleSpinBox_bandwidth.setValue(self.model.transceiver.bandwidth / 1.0e6)
         self.view.ui.doubleSpinBox_noisefigure.setValue(self.model.transceiver.noise_figure)
         self.view.ui.doubleSpinBox_temperature.setValue(self.model.transceiver.temperature)
+        self.view.ui.doubleSpinBox_receivergain.setValue(self.model.transceiver.receiver_gain)
 
         # Antenna view
 
@@ -279,6 +283,7 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
         self.connect(self.view.ui.doubleSpinBox_bandwidth, QtCore.SIGNAL("valueChanged(double)"), self.bandwidth)
         self.connect(self.view.ui.doubleSpinBox_temperature, QtCore.SIGNAL("valueChanged(double)"), self.temperature)
         self.connect(self.view.ui.doubleSpinBox_noisefigure, QtCore.SIGNAL("valueChanged(double)"), self.noisefigure)
+        self.connect(self.view.ui.doubleSpinBox_receivergain, QtCore.SIGNAL("valueChanged(double)"), self.receivergain)
 
 	# Environment
 

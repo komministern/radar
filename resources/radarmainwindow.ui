@@ -7,14 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>1327</width>
-    <height>1047</height>
+    <height>678</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_9">
+   <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0" colspan="3">
      <widget class="QTabWidget" name="tabWidget_graphics">
       <property name="currentIndex">
@@ -54,8 +54,8 @@
       <property name="title">
        <string>Receiver</string>
       </property>
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QDoubleSpinBox" name="doubleSpinBox_bandwidth">
@@ -82,7 +82,34 @@
          </item>
         </layout>
        </item>
-       <item row="1" column="0">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_19">
+         <item>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_receivergain">
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>100.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_receivergain">
+           <property name="text">
+            <string>Gain (dB)</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
           <widget class="QDoubleSpinBox" name="doubleSpinBox_noisefigure">
@@ -103,7 +130,7 @@
          </item>
         </layout>
        </item>
-       <item row="2" column="0">
+       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
           <widget class="QDoubleSpinBox" name="doubleSpinBox_temperature">
@@ -650,7 +677,7 @@
      <x>0</x>
      <y>0</y>
      <width>1327</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
