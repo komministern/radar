@@ -5,7 +5,7 @@
 from pyqtgraph.Qt import QtGui, QtCore
 import pyqtgraph as pg
 
-from pyqtgraph.Qt import loadUiType
+#from pyqtgraph.Qt import loadUiType
 
 WindowTemplate, TemplateBaseClass = pg.Qt.loadUiType('./resources/radarmainwindow.ui')
 #WindowTemplate, TemplateBaseClass = loadUiType('./resources/radarmainwindow.ui')

@@ -21,6 +21,7 @@ class Radar(Observable):
 	
     def __init__(self, **kwds):
 
+        super(Observable, self).__init__(**kwds)
 	self.simulation_globals = None 
 	self.transceiver = None 
 	self.environment = None
@@ -33,7 +34,6 @@ class Radar(Observable):
 
         self.radar_setup()
 	
-        super(Observable, self).__init__(**kwds)
 
 
     # *** PROPERTIES ***

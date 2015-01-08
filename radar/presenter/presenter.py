@@ -96,7 +96,7 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
 	self.model.prf = adouble
 
     def samplefrequency(self, adouble):
-        self.model.sample_frequency = adouble * 1.0e6
+        self.model.transceiver.sample_frequency = adouble * 1.0e6
 
     def listeningtime(self, adouble):
         self.model.transceiver.change_listeningtime(adouble * 1.0e-6)   # Due to stc recalculation necessary when listeningtime changes.
