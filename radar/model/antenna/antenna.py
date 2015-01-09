@@ -10,7 +10,9 @@ import model.waveforms as wfs
 class Antenna(object):
 
     def __init__(self, pointer, **kwds):
-		
+
+        super(Antenna, self).__init__(**kwds)
+
     	self.simulation_globals = pointer
 
     	self.main_lobe_gain = None          # dB (!)
@@ -20,7 +22,7 @@ class Antenna(object):
     	self.position = None
     	self.angle = None
 
-        super(Antenna, self).__init__(**kwds)
+
 
     # *** PROPERTIES, GETTERS AND SETTERS ***
 

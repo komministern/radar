@@ -19,11 +19,14 @@ from functools import partial
 class Analogue_Waveform(object):
 	
     def __init__(self, **kwds):
-    	self.freq_func = None	# The center frequency of the waveform.
+        
+        super(Analogue_Waveform, self).__init__(**kwds)
+    	
+        self.freq_func = None	# The center frequency of the waveform.
     	self.timelength = None	# Timelength at zero doppler.
     	self.phase_func = None	# A biphase code.
 	
-        super(Analogue_Waveform, self).__init__(**kwds)
+
 
     # *** PROPERTIES, GETTERS AND SETTERS ***
 
@@ -139,8 +142,7 @@ def nsamples(fs, timelength):
 
 
 
-#def sampled_timelength(fs, timelength):	# Unnecessary function!??!		
-#	return 1.0 / fs * (nbrofsamples - 1)
+
 
 
 
@@ -197,29 +199,29 @@ class Sampled_Waveform(np.ndarray):     # This taken from numpy docs (__new__, _
     	p = p**2 	 # square it to get the power 
 
     	p = p / 50.0	 # 50 Ohm. Hmmm.... ????
-
-    	if n % 2 > 0: # we've got odd number of points fft
-    	    p[1:len(p)] = p[1:len(p)] * 2
-	else:
+        
+        if n % 2 > 0: # we've got odd number of points fft
+            p[1:len(p)] = p[1:len(p)] * 2
+        else:
     	    p[1:len(p) - 1] = p[1:len(p) - 1] * 2 # we've got even number of points fft
-		
-    	#domf = np.argmax(p)
-
-    	freqArray = np.arange(0, nUniquePts, 1.0) * (self.fs / n) # Hmmm. Att dela med (n-1) i stället för n gjorde susen(?).
+            
+        #domf = np.argmax(p)
+        
+        freqArray = np.arange(0, nUniquePts, 1.0) * (self.fs / n) # Hmmm. Att dela med (n-1) i stället för n gjorde susen(?).
     	plot(freqArray, 30 + 10*np.log10(p), color='r')
 	
     	#print 'Max freq: ', freqArray[np.argmax(p)]
 
     	#ylim((-60,10))	
-		
-    	xlabel('Frequency')
-    	ylabel('Power (dBm)')
-
-    	subplot(3,1,3)
-
-	plt.psd(self, Fs=self.fs)
-
-    	show()
+        
+        xlabel('Frequency')
+        ylabel('Power (dBm)')
+        
+        subplot(3,1,3)
+        
+        plt.psd(self, Fs=self.fs)
+        
+        show()
 
     	# Hmmm... Blir nog ganska så stiligt detta!!!?!!
 

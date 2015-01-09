@@ -18,20 +18,18 @@ from observable.observable import Observable
 
 
 class Radar(Observable):
-	
+    
     def __init__(self, **kwds):
-
         super(Observable, self).__init__(**kwds)
-	self.simulation_globals = None 
-	self.transceiver = None 
-	self.environment = None
-	self.antenna = None
-		
-	self.prf = None					
-	self.radar_state = None
-
-#	self._time = None
-
+        
+        self.simulation_globals = None
+        self.transceiver = None
+        self.environment = None
+        self.antenna = None
+        
+        self.prf = None
+        self.radar_state = None
+        
         self.radar_setup()
 	
 
@@ -79,7 +77,7 @@ class Radar(Observable):
     def prf(self, value):
     	self._prf = value
 
-    # state
+    # radar_state
 		
     @property
     def radar_state(self):

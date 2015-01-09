@@ -4,15 +4,19 @@
 class PointTarget(object):
 
     def __init__(self, r, v, rcs, **kwds):
-        
+
+        super(PointTarget, self).__init__(**kwds)
+
         self.v = v
         self.r = r
         self.rcs = rcs
         
-        super(PointTarget, self).__init__(**kwds)
 
 
     # PROPERTIES
+
+    
+    # v 
 
     @property
     def v(self):
@@ -21,6 +25,8 @@ class PointTarget(object):
     @v.setter
     def v(self, avalue):
         self._v = avalue
+
+    # r
 
     @property
     def r(self):
@@ -33,6 +39,7 @@ class PointTarget(object):
         else:
             self._r = 0.0
 
+    # rcs
 
     @property
     def rcs(self):
@@ -41,6 +48,8 @@ class PointTarget(object):
     @rcs.setter
     def rcs(self, avalue):
         self._rcs = avalue
+
+    # info
 
     @property
     def info(self):

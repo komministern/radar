@@ -15,30 +15,32 @@ class Transceiver(object):
 
     def __init__(self, pointer, **kwds):
 
-    	self.simulation_globals = pointer
+        super(Transceiver, self).__init__(**kwds)
+        
+        self.simulation_globals = pointer
+        
+        self.antenna = None
+        
+        self.power = None		# kW
 
-    	self.antenna = None
-
-    	self.power = None		# kW
-
-    	self.pulsewidth = None
+        self.pulsewidth = None
         self.listeningtime = None
-
-	self.final_if_transmit_waveform = None
-    	self.final_if_receive_waveforms = None
-
-    	self.transmit_frequency = None
-		
-    	self.temperature = None		# K
-    	self.bandwidth = None		# Hz
+        
+        self.final_if_transmit_waveform = None
+        self.final_if_receive_waveforms = None
+        
+        self.transmit_frequency = None
+        
+        self.temperature = None		# K
+        self.bandwidth = None		# Hz
 
     	# The best available receiver technology currently limits the receiver’s noise figure to
     	# around 3dB (less is better). -From www.radar-sales.com.
-
+        
         self.receiver_gain = None   # dB
-    	self.noise_figure = None	# dB
-
-    	self.impedance = None		# Ohm
+        self.noise_figure = None	# dB
+        
+        self.impedance = None		# Ohm
 
     	self.final_if = None
     	self.sample_frequency = None
@@ -46,14 +48,9 @@ class Transceiver(object):
         self.noise_state = None
         self.stc_state = None
 
-        self.stc_vectors = None#
-        self.stc_choice = 2#
+        self.stc_vectors = None
+        self.stc_choice = None
 
-#        self.stc_function = None#
-
-#        self.stc_func = np.vectorize(self.stc_vector)
-
-        super(Transceiver, self).__init__(**kwds)
 
 
 
@@ -200,7 +197,45 @@ class Transceiver(object):
     def impedance(self, value):
     	self._impedance = value
 
-    
+    # stc_vectors
+
+    @property
+    def stc_vectors(self):
+        return self._stc_vectors
+
+    @stc_vectors.setter
+    def stc_vectors(self, apointer):
+        self._stc_vectors = apointer
+
+    # stc_choice
+
+    @property
+    def stc_choice(self):
+        return self._stc_choice
+
+    @stc_choice.setter
+    def stc_choice(self, value):
+        self._stc_choice = value
+
+    # stc_state
+
+    @property
+    def stc_state(self):
+        return self._stc_state
+
+    @stc_state.setter
+    def stc_state(self, value):
+        self._stc_state = value
+
+    # noice_state
+
+    @property
+    def noice_state(self):
+        return self._noice_state
+
+    @noice_state.setter
+    def noice_state(self, value):
+        self._noice_state = value
 
 
 

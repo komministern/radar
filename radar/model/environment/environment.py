@@ -11,11 +11,12 @@ class Environment(object):
 
     def __init__(self, **kwds):
 
+        super(Environment, self).__init__(**kwds)
+        
         self.target_1 = None
         self.target_2 = None
         self.pointtargets = []
 
-        super(Environment, self).__init__(**kwds)
         self.setup_pointtargets()
 
 
