@@ -474,16 +474,16 @@
              <item>
               <widget class="QSpinBox" name="spinBox_stcvalue">
                <property name="minimum">
-                <number>10</number>
+                <number>1</number>
                </property>
                <property name="maximum">
                 <number>50</number>
                </property>
                <property name="singleStep">
-                <number>10</number>
+                <number>1</number>
                </property>
                <property name="value">
-                <number>30</number>
+                <number>25</number>
                </property>
               </widget>
              </item>
@@ -677,7 +677,7 @@
      <x>0</x>
      <y>0</y>
      <width>1327</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

@@ -155,7 +155,7 @@ class Transceiver(object):
 
     @listeningtime.setter
     def listeningtime(self, value):
-    	self._listeningtime =  value
+    	self._listeningtime = value
 
     # temperature
 
@@ -339,7 +339,7 @@ class Transceiver(object):
 
 
     def generate_stc_vectors(self):         # This method MUST be called if the listeningtime changes!!!!!
-        self.stc_vectors = np.array([self.generate_stc_vector(each * 1.0e4) for each in np.arange(1, 6)])
+        self.stc_vectors = np.array([self.generate_stc_vector(each * 1.0e3) for each in np.arange(1, 51)])
 
 
     def generate_stc_vector(self, R):
@@ -357,6 +357,7 @@ class Transceiver(object):
         #    return np.fix(t * self.sample_frequency).astype(int)
 
         def r(i):
+            #return (1.0 * i / self.sample_frequency) * const.c / 2           
             return (1.0 * i / self.sample_frequency + self.pulsewidth) * const.c / 2
 
         def g(r):

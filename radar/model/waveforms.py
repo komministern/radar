@@ -174,7 +174,7 @@ class Sampled_Waveform(np.ndarray):     # This taken from numpy docs (__new__, _
 
     def show(self):
 
-    	print self.timevector #()
+    	#print self.timevector #()
 
     	subplot(3,1,1)
     	plot(self.timevector, self) #(), self)

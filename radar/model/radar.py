@@ -160,7 +160,7 @@ class Radar(Observable):
 
         self.transceiver.noise_state = 'OFF'
         self.transceiver.stc_state = 'OFF'
-        self.transceiver.stc_choice = 2     # That is, 30km.
+        self.transceiver.stc_choice = (10 - 1)      # That is, STC is active up to 10km.
 
     	self.transceiver.set_rectangular_waveform()
 

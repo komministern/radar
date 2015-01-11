@@ -5,6 +5,8 @@ import numpy as np
 #import scipy as sc
 #import scipy.constants as const
 
+import random
+
 from pointtarget import PointTarget
 
 class Environment(object):
@@ -73,6 +75,19 @@ class Environment(object):
 
     def set_rcs_target_2(self, value):
         self.target_2.rcs = value
+
+
+
+    def createtargets(self, n, Rmin, Rmax):
+
+        self.pointtargets = []
+
+        for i in range(n):
+            self.pointtargets.append(PointTarget(random.randint(Rmin,Rmax), 0.0, 100.0))
+
+
+        
+
 
 
 

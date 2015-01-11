@@ -88,7 +88,7 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
             self.model.transceiver.toggle_stc('OFF')
 
     def stcvalue(self, anint):
-        self.model.transceiver.stc_choice = anint / 10 - 1
+        self.model.transceiver.stc_choice = anint - 1
 
     # Radar Actions
 
@@ -187,7 +187,7 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
 
         # Controls view
 
-        self.view.ui.spinBox_stcvalue.setValue( (self.model.transceiver.stc_choice + 1) * 10 )
+        self.view.ui.spinBox_stcvalue.setValue( self.model.transceiver.stc_choice + 1 )
 
         # Radar view
 

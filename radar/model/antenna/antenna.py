@@ -89,6 +89,8 @@ class Antenna(object):
 
 
 
+
+
     # This method determines which of the pre-calculated waveforms that the reflection (due to velocity and distance)
     # has produced.
 
@@ -111,13 +113,19 @@ class Antenna(object):
         
         return waveforms[delaybin, dopplerbin, :]
 
-	
+
+
+
+
     # The listen method is the method called from the transceiver object (or whoever the user is). At the moment only the main beam will be considered, but multiple calls to
     # the calculate_received_beam_waveform can be made.
 
     def listen(self, power, transmitted_freq, waveforms, listening_time, pulsewidth, fs, impedance, receiver_gain):
         return self.calculate_received_beam_waveform(self.position, self.angle, power, transmitted_freq, self.main_lobe_gain, self.main_lobe_beamwidth, waveforms, listening_time, pulsewidth, fs, impedance, receiver_gain)
 		
+
+
+
 
     # Calculate_received_beam_waveform returns a vector with all the reflections produced by reflectors in the beam. This method will be called multiple times if
     # secondary beams are present in the simulation.
@@ -134,30 +142,33 @@ class Antenna(object):
         
         for (r,v,rcs) in env_array:
             
-            if r > pulsewidth * const.c / 4 and r < max_range + pulsewidth * const.c:	# Distances shorter than this is not considered. (To avoid division by zero)
+            if r > pulsewidth * const.c / 8 and r < max_range + pulsewidth * const.c:	# Distances shorter than pw*c/8 is not considered. (To avoid division by zero)
                 
+                i = np.fix( (2.0*r / const.c - pulsewidth) * fs ).astype(int)
+                # i is the samplebin which corresponds to the targets distance. i=0 should correspond to
+                # a target at r=c*pulsewidth/2
+
+                p_received = radarequations.p_rec(power, gain, rcs, transmitted_freq, r) * radarequations.from_dB(receiver_gain)
+                vect_received = self.get_received_waveform_from_point_target(waveforms, r, v, fs)
+ 
+
                 # If r < pulsewidth*c/2 (but greater than the condition in the if condition above)
-    	        # only part of the reflection (the tail) will appear in the listen-vector.
-                
+    	        # only part of the reflection (the tail) will appear in the listen-vector.                
                 if r < pulsewidth * const.c / 2:
-                    pass				# Left to do!
+                    # Condition implies i < 0
+        
+                    listen_wf[0:len(vect_received)+i] += vect_received[-i:] * radarequations.vpeak_from_mw(p_received * 1000.0, impedance)
 				
-    		    # If r > Rmax and r < Rmax + pulsewidth*c/2, then only the head of the transmitted
-		    # waveform will appear in the listening vector.
+    		# If r > Rmax and r < Rmax + pulsewidth*c/2, then only the head of the transmitted
+		# waveform will appear in the listening vector.
 		elif r > max_range:
-                    pass				# Left to do!
+
+                    if i <= len(listen_wf):
+                        listen_wf[i:] += vect_received[0:(len(listen_wf)-i)] * radarequations.vpeak_from_mw(p_received * 1000.0, impedance)
                 
+                # If target in between, just add.
                 else:
                     
-                    p_received = radarequations.p_rec(power, gain, rcs, transmitted_freq, r) * radarequations.from_dB(receiver_gain)
-                    vect_received = self.get_received_waveform_from_point_target(waveforms, r, v, fs)
-
-    		    # i is the samplebin which corresponds to the targets distance. t=0 should correspond to
-                    # a target at r=c*pulsewidth/2
-                    
-                    i = np.fix( (2.0*r / const.c - pulsewidth) * fs ).astype(int)
                     listen_wf[i:i+len(vect_received)] += vect_received * radarequations.vpeak_from_mw(p_received * 1000.0, impedance)
-   
-	    	    # Could this be improved with scipy.weave.blitz()?????? Try this!
                     
         return listen_wf
