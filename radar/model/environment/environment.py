@@ -52,8 +52,8 @@ class Environment(object):
     # METHODS
 
     def setup_pointtargets(self):
-        self.target_1 = PointTarget(r=35000.0, v=200.0, rcs=100.0)
-        self.target_2 = PointTarget(r=50000.0, v=-200.0, rcs=100.0)
+        self.target_1 = PointTarget(r=35000.0, v=50.0, rcs=100.0)
+        self.target_2 = PointTarget(r=50000.0, v=-35.0, rcs=100.0)
         self.pointtargets.append(self.target_1)
         self.pointtargets.append(self.target_2)
 

@@ -49,7 +49,8 @@ class Transceiver(object):
         self.stc_state = None
 
         self.stc_vectors = None
-        self.stc_choice = None
+        self.stc_choice = None  # 0 <= stc_choice <= 49     Not nice!!!
+        self.stc_power = None   # 2 <= stc_power <= 4 
 
 
 
@@ -227,6 +228,16 @@ class Transceiver(object):
     def stc_state(self, value):
         self._stc_state = value
 
+    # stc_power
+
+    @property
+    def stc_power(self):
+        return self._stc_power
+
+    @stc_power.setter
+    def stc_power(self, value):
+        self._stc_power = value
+
     # noice_state
 
     @property
@@ -339,10 +350,16 @@ class Transceiver(object):
 
 
     def generate_stc_vectors(self):         # This method MUST be called if the listeningtime changes!!!!!
-        self.stc_vectors = np.array([self.generate_stc_vector(each * 1.0e3) for each in np.arange(1, 51)])
+        
+        self.stc_vectors = []
+
+        for n in range(2,5):
+            self.stc_vectors.append( [self.generate_stc_vector(each * 1.0e3, n) for each in np.arange(1, 51)] )
+
+        self.stc_vectors = np.array(self.stc_vectors)
 
 
-    def generate_stc_vector(self, R):
+    def generate_stc_vector(self, R, n):
         
         # Now, we shall generate a vector to multiplicate the listen vector with. The function I have in mind is f ~ r^2, or something
         # very similar. The beginning of the listen vector is at r=Tpw * c / 2, not zero. The ith bin in the listen vector corresponds to
@@ -357,11 +374,11 @@ class Transceiver(object):
         #    return np.fix(t * self.sample_frequency).astype(int)
 
         def r(i):
-            #return (1.0 * i / self.sample_frequency) * const.c / 2           
-            return (1.0 * i / self.sample_frequency + self.pulsewidth) * const.c / 2
+            return (1.0 * i / self.sample_frequency) * const.c / 2      # Gain is 0 until the listening starts.           
+            #return (1.0 * i / self.sample_frequency + self.pulsewidth) * const.c / 2
 
         def g(r):
-            return r**2 / R**2
+            return r**(1.0*n/2) / R**(1.0*n/2)
 
         # The stc shall be active for R km, that is, after R km the stc is unity.
         
@@ -387,7 +404,7 @@ class Transceiver(object):
 
         if self.stc_state == 'ON':
 
-            self.listen_wf *= self.stc_vectors[self.stc_choice]       # This should be faster than using a vectorized function here.
+            self.listen_wf *= self.stc_vectors[self.stc_power - 2, self.stc_choice]       # This should be faster than using a vectorized function here.
 
         if self.noise_state == 'ON':
     	    self.listen_wf += radarequations.noise_vrms(self.temperature, self.bandwidth, self.noise_figure, self.receiver_gain, self.impedance) * np.random.randn( len(self.listen_wf) )

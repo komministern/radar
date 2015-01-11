@@ -90,6 +90,9 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
     def stcvalue(self, anint):
         self.model.transceiver.stc_choice = anint - 1
 
+    def stcpower(self, anint):
+        self.model.transceiver.stc_power = anint
+
     # Radar Actions
 
     def prf(self, adouble):
@@ -188,6 +191,7 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
         # Controls view
 
         self.view.ui.spinBox_stcvalue.setValue( self.model.transceiver.stc_choice + 1 )
+        self.view.ui.spinBox_stcpower.setValue( self.model.transceiver.stc_power )
 
         # Radar view
 
@@ -206,6 +210,7 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
         self.listofnoeditwhiletransmit.append(self.view.ui.doubleSpinBox_finaliffrequency)
         self.view.ui.doubleSpinBox_impedance.setValue(self.model.transceiver.impedance)
         self.view.ui.doubleSpinBox_listeningtime.setValue(self.model.transceiver.listeningtime * 1.0e6)
+        self.listofnoeditwhiletransmit.append(self.view.ui.doubleSpinBox_listeningtime)
 
         # Receiver view
 
@@ -261,6 +266,7 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
 	self.view.connect(self.view.ui.pushButton_stop, QtCore.SIGNAL("clicked()"), self.stop)
         self.view.connect(self.view.ui.checkBox_noise, QtCore.SIGNAL("stateChanged(int)"), self.noise)
         self.view.connect(self.view.ui.checkBox_stc, QtCore.SIGNAL("stateChanged(int)"), self.stc)
+        self.view.connect(self.view.ui.spinBox_stcpower, QtCore.SIGNAL("valueChanged(int)"), self.stcpower)
         self.view.connect(self.view.ui.pushButton_reinitialize, QtCore.SIGNAL("clicked()"), self.reinitialize)
         self.view.connect(self.view.ui.spinBox_stcvalue, QtCore.SIGNAL("valueChanged(int)"), self.stcvalue)
 

@@ -161,6 +161,7 @@ class Radar(Observable):
         self.transceiver.noise_state = 'OFF'
         self.transceiver.stc_state = 'OFF'
         self.transceiver.stc_choice = (10 - 1)      # That is, STC is active up to 10km.
+        self.transceiver.stc_power = 4
 
     	self.transceiver.set_rectangular_waveform()
 
@@ -175,7 +176,7 @@ class Radar(Observable):
     	# antenna
 
     	self.antenna.main_lobe_gain = 36.0	
-    	self.antenna.main_lobe_beamwidth = 0.4
+    	self.antenna.main_lobe_beamwidth = 0.0
 
         # timer - Observe that new period of the timer is set the next time
         # the radar starts.

@@ -131,7 +131,7 @@ g	radar/model/transceiver/transceiver.py	/^        def g(r):$/;"	f	function:Tran
 gain	radar/presenter/presenter.py	/^    def gain(self, adouble):$/;"	m	class:Presenter
 generate_final_if_receive_waveforms	radar/model/transceiver.py	/^    def generate_final_if_receive_waveforms(self, awf, fs, transmit_freq):$/;"	m	class:Transceiver
 generate_final_if_receive_waveforms	radar/model/transceiver/transceiver.py	/^    def generate_final_if_receive_waveforms(self, awf, fs, transmit_freq):$/;"	m	class:Transceiver
-generate_stc_vector	radar/model/transceiver/transceiver.py	/^    def generate_stc_vector(self, R):$/;"	m	class:Transceiver
+generate_stc_vector	radar/model/transceiver/transceiver.py	/^    def generate_stc_vector(self, R, n):$/;"	m	class:Transceiver
 generate_stc_vectors	radar/model/transceiver/transceiver.py	/^    def generate_stc_vectors(self):         # This method MUST be called if the listeningtime changes!!!!!$/;"	m	class:Transceiver
 get_received_waveform_from_point_target	radar/model/antenna.py	/^    def get_received_waveform_from_point_target(self, waveforms, r, velocity, fs):$/;"	m	class:Antenna
 get_received_waveform_from_point_target	radar/model/antenna/antenna.py	/^    def get_received_waveform_from_point_target(self, waveforms, r, velocity, fs):$/;"	m	class:Antenna
@@ -304,10 +304,13 @@ start	radar/presenter/presenter.py	/^    def start(self):$/;"	m	class:Presenter
 stc	radar/presenter/presenter.py	/^    def stc(self):$/;"	m	class:Presenter
 stc_choice	radar/model/transceiver/transceiver.py	/^    def stc_choice(self):$/;"	m	class:Transceiver
 stc_choice	radar/model/transceiver/transceiver.py	/^    def stc_choice(self, value):$/;"	m	class:Transceiver
+stc_power	radar/model/transceiver/transceiver.py	/^    def stc_power(self):$/;"	m	class:Transceiver
+stc_power	radar/model/transceiver/transceiver.py	/^    def stc_power(self, value):$/;"	m	class:Transceiver
 stc_state	radar/model/transceiver/transceiver.py	/^    def stc_state(self):$/;"	m	class:Transceiver
 stc_state	radar/model/transceiver/transceiver.py	/^    def stc_state(self, value):$/;"	m	class:Transceiver
 stc_vectors	radar/model/transceiver/transceiver.py	/^    def stc_vectors(self):$/;"	m	class:Transceiver
 stc_vectors	radar/model/transceiver/transceiver.py	/^    def stc_vectors(self, apointer):$/;"	m	class:Transceiver
+stcpower	radar/presenter/presenter.py	/^    def stcpower(self, anint):$/;"	m	class:Presenter
 stcvalue	radar/presenter/presenter.py	/^    def stcvalue(self, anint):$/;"	m	class:Presenter
 stop	radar/presenter/presenter.py	/^    def stop(self):$/;"	m	class:Presenter
 subplot	radar/model/waveforms.py	/^from pylab import plot, show, title, xlabel, ylabel, subplot, ylim$/;"	i
