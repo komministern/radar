@@ -1,17 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-class PointTarget(object):
+class Target(object):
 
-    def __init__(self, r, v, rcs, **kwds):
+    def __init__(self, r, v, rcs, sw_type, **kwds):
 
-        super(PointTarget, self).__init__(**kwds)
+        super(Target, self).__init__(**kwds)
 
         self.v = v
         self.r = r
         self.rcs = rcs
         
-
+        self.target_type = sw_type
 
     # PROPERTIES
 
@@ -48,6 +48,16 @@ class PointTarget(object):
     @rcs.setter
     def rcs(self, avalue):
         self._rcs = avalue
+
+    # target_type
+
+    @property
+    def target_type(self):
+        return self._target_type
+
+    @target_type.setter
+    def target_type(self, atype):
+        self._target_type = atype
 
     # info
 

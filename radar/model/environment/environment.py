@@ -7,7 +7,7 @@ import numpy as np
 
 import random
 
-from pointtarget import PointTarget
+from target import Target
 
 class Environment(object):
 
@@ -17,20 +17,20 @@ class Environment(object):
         
         self.target_1 = None
         self.target_2 = None
-        self.pointtargets = []
+        self.targets = []
 
-        self.setup_pointtargets()
+        self.setup_targets()
 
 
     # PROPERTIES
 
     @property
-    def pointtargets(self):
-        return self._pointtargets
+    def targets(self):
+        return self._targets
 
-    @pointtargets.setter
-    def pointtargets(self, pointer):
-        self._pointtargets = pointer
+    @targets.setter
+    def targets(self, pointer):
+        self._targets = pointer
 
     @property
     def target_1(self):
@@ -51,11 +51,11 @@ class Environment(object):
 
     # METHODS
 
-    def setup_pointtargets(self):
-        self.target_1 = PointTarget(r=35000.0, v=50.0, rcs=100.0)
-        self.target_2 = PointTarget(r=50000.0, v=-35.0, rcs=100.0)
-        self.pointtargets.append(self.target_1)
-        self.pointtargets.append(self.target_2)
+    def setup_targets(self):
+        self.target_1 = Target(r=35000.0, v=50.0, rcs=100.0)
+        self.target_2 = Target(r=50000.0, v=-35.0, rcs=100.0)
+        self.targets.append(self.target_1)
+        self.targets.append(self.target_2)
 
 
     def set_r_target_1(self, value):
@@ -80,10 +80,10 @@ class Environment(object):
 
     def createtargets(self, n, Rmin, Rmax):
 
-        self.pointtargets = []
+        self.targets = []
 
         for i in range(n):
-            self.pointtargets.append(PointTarget(random.randint(Rmin,Rmax), 0.0, 100.0))
+            self.targets.append(Target(random.randint(Rmin,Rmax), 0.0, 100.0))
 
 
         
@@ -93,13 +93,13 @@ class Environment(object):
 
 
     def update_targets(self, delta_t):
-        for element in self.pointtargets:
+        for element in self.targets:
             element.r += element.v * delta_t
 
 
 
     def get_reflection_vector(self, position, angle, max_distance):
-        reflection_array = np.array([element.info for element in self.pointtargets])	 	
+        reflection_array = np.array([element.info for element in self.targets])	 	
 	return reflection_array			
 
 
