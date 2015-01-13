@@ -9,11 +9,13 @@ import model.waveforms as wfs
 
 class Antenna(object):
 
-    def __init__(self, pointer, **kwds):
+    def __init__(self, rtime, simglobs, **kwds):
 
         super(Antenna, self).__init__(**kwds)
 
-    	self.simulation_globals = pointer
+        self.radartime = rtime
+
+    	self.simulation_globals = simglobs
 
     	self.main_lobe_gain = None          # dB (!)
     	self.main_lobe_beamwidth = None

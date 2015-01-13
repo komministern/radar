@@ -6,6 +6,7 @@ from antenna.antenna import Antenna
 from environment.environment import Environment
 from simulation_constants import Simulation_Constants
 import scipy.constants as const
+from radartime import RadarTime
 #import radarequations
 
 #import threading
@@ -22,6 +23,7 @@ class Radar(Observable):
     def __init__(self, **kwds):
         super(Observable, self).__init__(**kwds)
         
+        self.radartime = None
         self.simulation_globals = None
         self.transceiver = None
         self.environment = None
@@ -127,11 +129,12 @@ class Radar(Observable):
 
     def radar_setup(self):
 		
+        self.radartime = RadarTime(0.0)
     	self.simulation_globals = Simulation_Constants()
 
-    	self.environment = Environment()
-    	self.antenna = Antenna(self.simulation_globals)
-    	self.transceiver = Transceiver(self.simulation_globals)
+    	self.environment = Environment(self.radartime)
+    	self.antenna = Antenna(self.radartime, self.simulation_globals)
+    	self.transceiver = Transceiver(self.radartime, self.simulation_globals)
 
     	self.transceiver.antenna = self.antenna
 

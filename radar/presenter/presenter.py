@@ -228,10 +228,10 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
 
         self.view.ui.doubleSpinBox_targetonedistance.setValue(self.model.environment.target_1.r)
         self.view.ui.doubleSpinBox_targetonevelocity.setValue(self.model.environment.target_1.v)
-        self.view.ui.doubleSpinBox_targetonercs.setValue(self.model.environment.target_1.rcs)
+        self.view.ui.doubleSpinBox_targetonercs.setValue(self.model.environment.target_1.mean_rcs)
         self.view.ui.doubleSpinBox_targettwodistance.setValue(self.model.environment.target_2.r)
         self.view.ui.doubleSpinBox_targettwovelocity.setValue(self.model.environment.target_2.v)
-        self.view.ui.doubleSpinBox_targettworcs.setValue(self.model.environment.target_2.rcs)
+        self.view.ui.doubleSpinBox_targettworcs.setValue(self.model.environment.target_2.mean_rcs)
 
 
 

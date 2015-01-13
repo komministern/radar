@@ -11,10 +11,12 @@ from target import Target
 
 class Environment(object):
 
-    def __init__(self, **kwds):
+    def __init__(self, rtime, **kwds):
 
         super(Environment, self).__init__(**kwds)
         
+        self.radartime = rtime
+
         self.target_1 = None
         self.target_2 = None
         self.targets = []
@@ -52,8 +54,8 @@ class Environment(object):
     # METHODS
 
     def setup_targets(self):
-        self.target_1 = Target(r=35000.0, v=50.0, rcs=100.0)
-        self.target_2 = Target(r=50000.0, v=-35.0, rcs=100.0)
+        self.target_1 = Target(35000.0, 50.0, 100.0, 'SW2', self.radartime)
+        self.target_2 = Target(50000.0, -35.0, 100.0, 'SW4', self.radartime)
         self.targets.append(self.target_1)
         self.targets.append(self.target_2)
 

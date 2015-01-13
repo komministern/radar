@@ -13,11 +13,12 @@ import model.radarequations as radarequations
 
 class Transceiver(object):
 
-    def __init__(self, pointer, **kwds):
+    def __init__(self, rtime, simglobs, **kwds):
 
         super(Transceiver, self).__init__(**kwds)
         
-        self.simulation_globals = pointer
+        self.radartime = rtime
+        self.simulation_globals = simglobs
         
         self.antenna = None
         
