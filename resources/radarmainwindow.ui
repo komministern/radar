@@ -40,10 +40,7 @@
        </attribute>
        <layout class="QGridLayout" name="gridLayout_8">
         <item row="0" column="0">
-         <widget class="PlotWidget" name="graphicsView_2"/>
-        </item>
-        <item row="1" column="0">
-         <widget class="PlotWidget" name="graphicsView_3"/>
+         <widget class="MyPPI" name="widget" native="true"/>
         </item>
        </layout>
       </widget>
@@ -737,6 +734,12 @@
    <class>PlotWidget</class>
    <extends>QGraphicsView</extends>
    <header>pyqtgraph.h</header>
+  </customwidget>
+  <customwidget>
+   <class>MyPPI</class>
+   <extends>QWidget</extends>
+   <header>view/myppi.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>
