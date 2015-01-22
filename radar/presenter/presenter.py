@@ -5,12 +5,13 @@
 from pyqtgraph.Qt import QtCore
 
 #import pyqtgraph as pg
-#import numpy as np
+import numpy as np
 import scipy.constants as const
 
 class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able to connect to signals from view.
 
     def __init__(self, amodel, aview, **kwds):
+	super(Presenter, self).__init__(**kwds)
 
 	self.model = amodel
 	self.view = aview
@@ -23,7 +24,7 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
         self.update_view_values()
         self.setup_plotwidget()
 
-	super(Presenter, self).__init__(**kwds)
+	self.angle = 0.0        # Experimental
 
 
     # *** PROPERTIES ***
@@ -152,7 +153,7 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
         self.model.environment.target_1.v = adouble
 
     def targetone_rcs(self, adouble):
-        self.model.environment.target_1.rcs = adouble
+        self.model.environment.target_1.mean_rcs = adouble
 
     def targettwo_distance(self, adouble):
         self.model.environment.target_2.r = adouble
@@ -161,7 +162,7 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
         self.model.environment.target_2.v = adouble
 
     def targettwo_rcs(self, adouble):
-        self.model.environment.target_2.rcs = adouble
+        self.model.environment.target_2.mean_rcs = adouble
 
 
 
@@ -174,13 +175,28 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
 #	print 'Presenter notified by model with argument', args[0]
 
         wf = args[1]
+        wfenv = args[2]
+        wfdetected = args[3]
 
-        self.curve.setData(wf.timevector, wf) 
+        self.curve_finalif.setData(wf.timevector, wf) 
+
+#        self.view.ui.plotWidget_finalif.plot(wfenv.timevector, wfenv) #, pen=(0,255,0))
 
 #        self.app.processEvents()            # This is used in a pyqtgraph example. Will need a
                                             # reference to the app though. (Doesn't exist at the moment.)
 
+#        wfabsfiltered = args[2]
+
+        self.curve_envelope.setData(wfenv.timevector, wfenv)
+        self.curve_detection_level.setData(wfenv.timevector, np.ones(len(wfenv)))
+
+
         self.model.environment.update_targets(1.0 / self.model.prf)
+
+
+        self.view.ui.widget_ppi.drawVector(wfdetected, self.angle)
+        self.angle += np.pi / 180.0
+
         self.update_view_values()       # Onödigt brutalt. Endast target-relaterade värden behöver uppdateras.
 
 
@@ -238,13 +254,25 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
     # Do some init stuff to the plotwidget(s).
 
     def setup_plotwidget(self):
-        self.pw = self.view.ui.plotWidget_finalif
+#        self.pw_finalif = self.view.ui.plotWidget_finalif
         self.view.ui.plotWidget_finalif.setTitle('Final IF')
         self.view.ui.plotWidget_finalif.setLabel('left', 'Value', units='V')
         self.view.ui.plotWidget_finalif.setLabel('bottom', 'Time', units='s')
         self.view.ui.plotWidget_finalif.setYRange(-10.0e-5, 10.0e-5)
-        # self.curve är en tillfällig nödlösning. Hur lösa snyggt?
-        self.curve = self.pw.plot(pen='y')
+
+        self.curve_finalif = self.view.ui.plotWidget_finalif.plot(pen='y')
+
+#        self.pw = self.view.ui.plotWidget_finalif
+        self.view.ui.plotWidget_envelope.setTitle('Linear Video')
+        self.view.ui.plotWidget_envelope.setLabel('left', 'Value', units='V')
+        self.view.ui.plotWidget_envelope.setLabel('bottom', 'Time', units='s')
+        self.view.ui.plotWidget_envelope.setYRange(-1.0, 3.0)
+ 
+        self.curve_envelope = self.view.ui.plotWidget_envelope.plot(pen='g')
+        self.curve_detection_level = self.view.ui.plotWidget_envelope.plot(pen='r')
+
+
+#        self.curve_finalif = self.view.ui.plotWidget_finalif.plot(pen='y')
 #        pg.setConfigOptions(antialias=True)
 
 

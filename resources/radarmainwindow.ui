@@ -20,27 +20,37 @@
       <property name="currentIndex">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="finalif">
+      <widget class="QWidget" name="receiver">
        <attribute name="title">
-        <string>Final IF</string>
+        <string>Analogue Receiver</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="0">
-         <widget class="PlotWidget" name="plotWidget_finalif">
-          <property name="cursor" stdset="0">
-           <cursorShape>CrossCursor</cursorShape>
+         <widget class="QSplitter" name="splitter">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
           </property>
+          <widget class="PlotWidget" name="plotWidget_finalif">
+           <property name="cursor" stdset="0">
+            <cursorShape>CrossCursor</cursorShape>
+           </property>
+          </widget>
+          <widget class="PlotWidget" name="plotWidget_envelope">
+           <property name="cursor" stdset="0">
+            <cursorShape>CrossCursor</cursorShape>
+           </property>
+          </widget>
          </widget>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="iqchannels">
+      <widget class="QWidget" name="ppi">
        <attribute name="title">
-        <string>IQ Channels</string>
+        <string>Analogue PPI</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_8">
         <item row="0" column="0">
-         <widget class="MyPPI" name="widget" native="true"/>
+         <widget class="MyPPI" name="widget_ppi" native="true"/>
         </item>
        </layout>
       </widget>
@@ -90,7 +100,10 @@
             <double>0.000000000000000</double>
            </property>
            <property name="maximum">
-            <double>100.000000000000000</double>
+            <double>110.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
            </property>
            <property name="value">
             <double>0.000000000000000</double>

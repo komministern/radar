@@ -4,7 +4,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from pylab import plot, show, title, xlabel, ylabel, subplot, ylim
-from scipy.signal import lfilter, butter, bessel
+from scipy.signal import lfilter, butter, filtfilt
 
 #import numpy as np
 #import scipy as sc
@@ -171,6 +171,21 @@ class Sampled_Waveform(np.ndarray):     # This taken from numpy docs (__new__, _
     @property
     def fs(self):
     	return self._fs
+
+
+    def butter_bandpass_filtered(self, lowcut, highcut, order=2):
+        nyq = 0.5 * self.fs
+        low = lowcut / nyq
+        high = highcut / nyq
+        b, a = butter(order, [low, high], btype='band')
+        return Sampled_Waveform(lfilter(b, a, self), self.fs)
+
+    def butter_lowpass_filtered(self, cutoff, order=2):
+        nyq = 0.5 * self.fs
+        low = cutoff / nyq
+        b, a = butter(order, low, btype='low')
+        return Sampled_Waveform(lfilter(b, a, self), self.fs)
+    
 
     def show(self):
 

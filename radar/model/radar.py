@@ -7,6 +7,7 @@ from environment.environment import Environment
 from simulation_constants import Simulation_Constants
 import scipy.constants as const
 from radartime import RadarTime
+from waveforms import Sampled_Waveform
 #import radarequations
 
 #import threading
@@ -16,7 +17,7 @@ from pyqtgraph.Qt import QtCore     # This is unfortunate. But I will use this p
                                     # understanding of periodical timers, here we are.
 
 from observable.observable import Observable
-
+import numpy as np
 
 class Radar(Observable):
     
@@ -120,9 +121,22 @@ class Radar(Observable):
 
     def execute(self):
     	if self.state == 'ON':			
-            wf = self.transceiver.transmit_and_listen()
-            self.emit('Jesus Lever!', wf)               # Working. But is this the way forward?
-    	else:
+            wf = self.transceiver.transmit_and_listen() # * 10.0
+            #print 'wf', type(wf)
+            wfsquared = (wf**2) * 2
+            wfpos = np.sqrt(wfsquared)
+            wffiltered = wfpos.butter_lowpass_filtered(10.0e6, 2)
+            wfenvelope = wffiltered
+            
+            wfdetected = Sampled_Waveform(np.zeros(len(wfenvelope)), self.transceiver.sample_frequency)
+            for i in range(len(wfdetected)):
+                if wfenvelope[i] > 1.0:
+                    wfdetected[i] = wfenvelope[i] - 1.0
+
+
+
+            self.emit('New Radar Data', wf, wfenvelope, wfdetected) 
+        else:
             pass
 
 
@@ -147,18 +161,18 @@ class Radar(Observable):
 
     	# transceiver
 
-    	self.transceiver.power = 20.0e3
-    	self.transceiver.pulsewidth = 5.0e-6
-    	Rmax = 100.0e3
+    	self.transceiver.power = 10.0e3
+    	self.transceiver.pulsewidth = 0.1e-6
+    	Rmax = 30.0e3
     	self.transceiver.listeningtime = 2.0 * Rmax / const.c
     	self.transceiver.transmit_frequency = 5.0e9
     	self.transceiver.temperature = 290.0
-    	self.transceiver.bandwidth = 50.0e6
-    	self.transceiver.noise_figure = 4.0
-        self.transceiver.receiver_gain = 0.0
+    	self.transceiver.bandwidth = 10.0e6
+    	self.transceiver.noise_figure = 5.0
+        self.transceiver.receiver_gain = 85.0
     	self.transceiver.resistance = 50.0
-    	self.transceiver.final_if = 5.0e6
-    	self.transceiver.sample_frequency = 63.0e6
+    	self.transceiver.final_if = 60.0e6
+    	self.transceiver.sample_frequency = 255.0e6
         self.transceiver.impedance = 50.0
 
         self.transceiver.noise_state = 'OFF'
@@ -178,7 +192,7 @@ class Radar(Observable):
 
     	# antenna
 
-    	self.antenna.main_lobe_gain = 36.0	
+    	self.antenna.main_lobe_gain = 30.0	
     	self.antenna.main_lobe_beamwidth = 0.0
 
         # timer - Observe that new period of the timer is set the next time
