@@ -336,6 +336,7 @@ stc_vectors	radar/model/transceiver/transceiver.py	/^    def stc_vectors(self, a
 stcpower	radar/presenter/presenter.py	/^    def stcpower(self, anint):$/;"	m	class:Presenter
 stcvalue	radar/presenter/presenter.py	/^    def stcvalue(self, anint):$/;"	m	class:Presenter
 stop	radar/presenter/presenter.py	/^    def stop(self):$/;"	m	class:Presenter
+struct	radar/view/myppi.py	/^import struct$/;"	i
 subplot	radar/model/waveforms.py	/^from pylab import plot, show, title, xlabel, ylabel, subplot, ylim$/;"	i
 subscribe	radar/observable/observable.py	/^    def subscribe(self, subscriber):    # Register new subscriber.$/;"	m	class:Observable
 sys	radar/view/myppi.py	/^import sys$/;"	i

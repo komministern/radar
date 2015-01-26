@@ -195,7 +195,7 @@ class Presenter(QtCore.QObject):        # Must inherit QObject for beeing able t
 
 
         self.view.ui.widget_ppi.drawVector(wfdetected, self.angle)
-        self.angle += np.pi / 180.0
+        self.angle += np.pi / 180.0 / 2
 
         self.update_view_values()       # Onödigt brutalt. Endast target-relaterade värden behöver uppdateras.
 
